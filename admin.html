@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Painel Admin - Império do Pastel</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Outfit"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            900: '#7c2d12',
+                        }
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.4s ease-out forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #fafafa;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .safe-pb {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .safe-pt {
+            padding-top: env(safe-area-inset-top);
+        }
+    </style>
+</head>
+
+<body class="antialiased text-slate-800 bg-slate-50 overflow-hidden">
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div id="admin-modal" class="fixed inset-0 z-[80] bg-slate-100 flex items-center justify-center p-6 transition-all">
+        <div class="bg-white w-full max-w-sm p-8 rounded-[2rem] shadow-2xl animate-slide-up relative">
+            <div class="text-center mb-8">
+                <div
+                    class="w-16 h-16 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-brand-600 shadow-inner">
+                    <i data-lucide="lock" class="w-8 h-8"></i>
+                </div>
+                <h3 class="font-display font-bold text-2xl text-slate-900">Admin Access</h3>
+            </div>
+            <div class="space-y-4">
+                <input type="email" id="adm-email" placeholder="E-mail"
+                    class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-brand-500 outline-none">
+                <input type="password" id="adm-pass" placeholder="Senha"
+                    class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-brand-500 outline-none">
+                <button onclick="window.adminLogin()"
+                    class="w-full py-4 bg-brand-900 text-white rounded-2xl font-bold text-sm shadow-lg">Entrar</button>
+                <p class="text-[10px] text-center text-slate-400 mt-2">Dica: Use a senha mestra ou efetue login do
+                    firebase.</p>
+                <a href="index.html" class="block text-center text-xs font-bold text-slate-500 mt-4 underline">Voltar
+                    para a Loja</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN PANEL -->
+    <div id="admin-panel" class="fixed inset-0 z-[90] bg-slate-50 hidden overflow-y-auto w-full h-full">
+        <div
+            class="bg-white px-6 py-5 sticky top-0 z-10 flex justify-between items-center shadow-sm border-b border-slate-100 safe-pt">
+            <div>
+                <h2 class="font-display font-bold text-xl text-slate-900">Dashboard</h2>
+                <p class="text-[10px] text-green-600 font-bold bg-green-50 px-2 py-0.5 rounded-md inline-block">● Online
+                </p>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="index.html"
+                    class="text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors hidden sm:block">Ir
+                    para Loja</a>
+                <button onclick="window.adminLogout()"
+                    class="text-xs font-bold text-red-600 bg-red-50 px-4 py-2 rounded-xl border border-red-100">Sair</button>
+            </div>
+        </div>
+
+        <div class="p-6 space-y-6 max-w-4xl mx-auto pb-24">
+            <div class="flex p-1 bg-slate-100 rounded-xl mb-4 overflow-x-auto no-scrollbar">
+                <button onclick="window.switchAdminTab('pedidos')" id="tab-pedidos"
+                    class="px-4 py-2 text-xs font-bold rounded-lg bg-white shadow-sm text-slate-800 transition-all shrink-0"><i
+                        data-lucide="receipt" class="w-3.5 h-3.5 inline mr-1"></i> Pedidos</button>
+                <button onclick="window.switchAdminTab('estoque')" id="tab-estoque"
+                    class="px-4 py-2 text-xs font-bold rounded-lg text-slate-500 transition-all shrink-0"><i
+                        data-lucide="package" class="w-3.5 h-3.5 inline mr-1"></i> Estoque</button>
+                <button onclick="window.switchAdminTab('avisos')" id="tab-avisos"
+                    class="px-4 py-2 text-xs font-bold rounded-lg text-slate-500 transition-all shrink-0"><i
+                        data-lucide="megaphone" class="w-3.5 h-3.5 inline mr-1"></i> Avisos</button>
+                <button onclick="window.switchAdminTab('destaques')" id="tab-destaques"
+                    class="px-4 py-2 text-xs font-bold rounded-lg text-slate-500 transition-all shrink-0"><i
+                        data-lucide="images" class="w-3.5 h-3.5 inline mr-1"></i> Destaques</button>
+                <button onclick="window.switchAdminTab('config')" id="tab-config"
+                    class="px-4 py-2 text-xs font-bold rounded-lg text-slate-500 transition-all shrink-0"><i
+                        data-lucide="settings" class="w-3.5 h-3.5 inline mr-1"></i> Config</button>
+            </div>
+
+            <!-- PAINEL PEDIDOS -->
+            <div id="view-pedidos" class="space-y-4">
+                <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+                    <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide mb-4 flex items-center gap-2">
+                        <i data-lucide="clipboard-list" class="w-4 h-4 text-brand-500"></i> Pedidos Ativos
+                    </h3>
+
+                    <div id="orders-list" class="space-y-4 mt-4">
+                        <div class="text-slate-400 text-xs italic text-center py-10">Buscando pedidos...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAINEL ESTOQUE (Do código original) -->
+            <div id="view-estoque" class="hidden space-y-4">
+                <!-- Produtos -->
+                <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100 mb-4">
+                    <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide mb-4 flex items-center gap-2">
+                        <i data-lucide="plus-circle" class="w-4 h-4 text-brand-500"></i> Novo Produto
+                    </h3>
+                    <div class="space-y-3">
+                        <input id="new-prod-name" placeholder="Nome do Produto"
+                            class="w-full p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none border border-transparent focus:border-brand-200 transition-all">
+                        <input id="new-prod-desc" placeholder="Descrição (ingredientes...)"
+                            class="w-full p-3 bg-slate-50 rounded-xl text-xs font-medium outline-none border border-transparent focus:border-brand-200 transition-all">
+                        <div class="flex gap-2">
+                            <input id="new-prod-price" type="number" step="0.01" placeholder="Preço (R$)"
+                                class="flex-1 p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none border border-transparent focus:border-brand-200 transition-all">
+                            <select id="new-prod-cat"
+                                class="flex-1 p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none border border-transparent focus:border-brand-200 transition-all">
+                                <option value="Açaí">Açaí</option>
+                                <option value="Pastéis">Pastéis</option>
+                                <option value="Hambúrgueres">Hambúrgueres</option>
+                                <option value="Gourmet">Gourmet</option>
+                                <option value="Porções">Porções</option>
+                                <option value="Pastelão">Pastelão</option>
+                                <option value="Bebidas">Bebidas</option>
+                                <option value="Adicionais">Adicionais</option>
+                            </select>
+                            <button onclick="window.addProduct()"
+                                class="bg-brand-600 text-white p-3 rounded-xl hover:bg-brand-700 active:scale-95 transition-all shadow-sm">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lista Produtos -->
+                <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div
+                            class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-orange-600">
+                            <i data-lucide="package" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide">Controle de Estoque</h3>
+                    </div>
+
+                    <div id="admin-cat-filters"
+                        class="flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-2 w-full max-w-full">
+                        <button onclick="window.filterAdminStock('Todos')"
+                            class="admin-cat-btn active px-4 py-2 rounded-xl text-xs font-black bg-brand-900 text-white shadow-sm whitespace-nowrap transition-all"
+                            data-cat="Todos">Todos</button>
+                        <button onclick="window.filterAdminStock('Açaí')"
+                            class="admin-cat-btn px-4 py-2 rounded-xl text-xs font-black bg-slate-50 text-slate-500 border border-slate-200 whitespace-nowrap transition-all"
+                            data-cat="Açaí">Açaí</button>
+                        <button onclick="window.filterAdminStock('Pastéis')"
+                            class="admin-cat-btn px-4 py-2 rounded-xl text-xs font-black bg-slate-50 text-slate-500 border border-slate-200 whitespace-nowrap transition-all"
+                            data-cat="Pastéis">Pastéis</button>
+                        <button onclick="window.filterAdminStock('Hambúrgueres')"
+                            class="admin-cat-btn px-4 py-2 rounded-xl text-xs font-black bg-slate-50 text-slate-500 border border-slate-200 whitespace-nowrap transition-all"
+                            data-cat="Hambúrgueres">Hambúrgueres</button>
+                        <button onclick="window.filterAdminStock('Gourmet')"
+                            class="admin-cat-btn px-4 py-2 rounded-xl text-xs font-black bg-slate-50 text-slate-500 border border-slate-200 whitespace-nowrap transition-all"
+                            data-cat="Gourmet">Gourmet</button>
+                        <button onclick="window.filterAdminStock('Porções')"
+                            class="admin-cat-btn px-4 py-2 rounded-xl text-xs font-black bg-slate-50 text-slate-500 border border-slate-200 whitespace-nowrap transition-all"
+                            data-cat="Porções">Porções</button>
+                        <button onclick="window.filterAdminStock('Pastelão')"
+                            class="admin-cat-btn px-4 py-2 rounded-xl text-xs font-black bg-slate-50 text-slate-500 border border-slate-200 whitespace-nowrap transition-all"
+                            data-cat="Pastelão">Pastelão</button>
+                        <button onclick="window.filterAdminStock('Bebidas')"
+                            class="admin-cat-btn px-4 py-2 rounded-xl text-xs font-black bg-slate-50 text-slate-500 border border-slate-200 whitespace-nowrap transition-all"
+                            data-cat="Bebidas">Bebidas</button>
+                        <button onclick="window.filterAdminStock('Adicionais')"
+                            class="admin-cat-btn px-4 py-2 rounded-xl text-xs font-black bg-slate-50 text-slate-500 border border-slate-200 whitespace-nowrap transition-all"
+                            data-cat="Adicionais">Adicionais</button>
+                    </div>
+
+                    <div id="stock-list"
+                        class="space-y-2 max-h-[40vh] overflow-y-auto pr-1 no-scrollbar border-b border-slate-100 pb-4 mb-4">
+                    </div>
+
+                    <!-- INGREDIENTES PARA "MONTE O SEU" -->
+                    <div class="mt-4 pt-2">
+                        <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide mb-4">Ingredientes Extras
+                        </h3>
+                        <div id="stock-ing-list" class="space-y-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAINEL AVISOS -->
+            <div id="view-avisos" class="hidden space-y-4">
+                <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+                    <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide mb-4 flex items-center gap-2">
+                        <i data-lucide="megaphone" class="w-4 h-4 text-brand-500"></i> Criar Aviso
+                    </h3>
+                    <div class="space-y-3">
+                        <input id="post-title" placeholder="Título (Ex: Promoção do Dia)"
+                            class="w-full p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none focus:ring-2 focus:ring-brand-200">
+                        <textarea id="post-msg" rows="3" placeholder="Mensagem para seus clientes..."
+                            class="w-full p-3 bg-slate-50 rounded-xl text-xs font-medium outline-none resize-none focus:ring-2 focus:ring-brand-200"></textarea>
+
+                        <div class="flex flex-col gap-2 mt-2">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Imagem do
+                                Post (Opcional)</label>
+                            <div class="flex items-center gap-2">
+                                <input id="post-image-url" type="url" placeholder="Cole o Link da Imagem aqui"
+                                    class="flex-1 p-3 bg-slate-50 rounded-xl text-xs font-medium outline-none focus:ring-2 focus:ring-brand-200"
+                                    oninput="window.previewPastedImage(this.value)">
+
+                                <label
+                                    class="p-3 bg-brand-50 text-brand-600 rounded-xl cursor-pointer hover:bg-brand-100 transition-colors shadow-sm flex items-center justify-center relative group"
+                                    title="Enviar arquivo do celular/PC">
+                                    <i data-lucide="image-plus" class="w-5 h-5"></i>
+                                    <input type="file" id="post-image-file" accept="image/*" class="hidden"
+                                        onchange="window.handlePostImage(this)">
+                                </label>
+                            </div>
+
+                            <div id="image-preview-container" class="hidden relative mt-2 group">
+                                <img id="post-image-preview"
+                                    class="w-full h-auto max-h-[500px] object-contain rounded-xl border border-slate-200 shadow-sm bg-slate-100" />
+                                <button onclick="window.clearPostImage()"
+                                    class="absolute top-3 right-3 p-2 bg-slate-900/60 backdrop-blur-md text-white rounded-full hover:bg-red-500 transition-all shadow-lg active:scale-95"
+                                    title="Remover imagem">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button onclick="window.addPost()"
+                            class="w-full mt-2 py-3 bg-brand-600 text-white rounded-xl font-bold text-sm shadow-md active:scale-95 transition-transform">
+                            Publicar Aviso
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+                    <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide mb-4">Avisos Ativos</h3>
+                    <div id="admin-posts-list" class="space-y-3"></div>
+                </div>
+            </div>
+
+            <!-- PAINEL DE DESTAQUES -->
+            <div id="view-destaques" class="hidden space-y-4">
+                <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+                    <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide mb-2 flex items-center gap-2">
+                        <i data-lucide="images" class="w-4 h-4 text-brand-500"></i> Banners Principais
+                    </h3>
+                    <p class="text-[10px] text-slate-500 mb-5 leading-relaxed">Personalize os 3 banners que aparecem no
+                        topo do site. Adicione a foto do <b>Especial da Casa</b> ou da <b>Promoção</b>!</p>
+
+                    <div id="admin-highlights-list" class="space-y-4"></div>
+                </div>
+            </div>
+
+            <!-- PAINEL CONFIG -->
+            <div id="view-config" class="hidden space-y-6">
+                <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600"><i
+                                data-lucide="store" class="w-5 h-5"></i></div>
+                        <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide">Status Loja</h3>
+                    </div>
+                    <div class="flex gap-3 mb-4">
+                        <button onclick="window.setStatus('open')" id="st-open"
+                            class="flex-1 py-4 rounded-2xl border-2 text-xs font-black transition-all">ABRIR</button>
+                        <button onclick="window.setStatus('auto')" id="st-auto"
+                            class="flex-1 py-4 rounded-2xl border-2 text-xs font-black transition-all">AUTO</button>
+                        <button onclick="window.setStatus('closed')" id="st-closed"
+                            class="flex-1 py-4 rounded-2xl border-2 text-xs font-black transition-all">FECHAR</button>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase mb-3">Horários (Modo Auto)</h4>
+                        <div class="flex gap-4">
+                            <div class="flex-1">
+                                <label class="text-[10px] font-bold text-slate-400 ml-1">Abertura (h)</label>
+                                <input id="cfg-hour-start" type="number" min="0" max="23"
+                                    class="w-full p-3 bg-slate-50 rounded-xl text-sm font-bold text-center outline-none border border-transparent focus:border-brand-200">
+                            </div>
+                            <div class="flex-1">
+                                <label class="text-[10px] font-bold text-slate-400 ml-1">Fechamento (h)</label>
+                                <input id="cfg-hour-end" type="number" min="0" max="23"
+                                    class="w-full p-3 bg-slate-50 rounded-xl text-sm font-bold text-center outline-none border border-transparent focus:border-brand-200">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+                    <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide mb-4 flex items-center gap-2">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-brand-500"></i> Locais de Entrega
+                    </h3>
+
+                    <div class="flex gap-2 mb-4">
+                        <input id="new-zone-name" placeholder="Nome do Bairro"
+                            class="flex-1 p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none border border-transparent focus:border-brand-200 transition-all">
+                        <input id="new-zone-price" type="number" placeholder="R$"
+                            class="w-20 p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none border border-transparent focus:border-brand-200 transition-all">
+                        <button onclick="window.addZone()"
+                            class="bg-green-500 text-white p-3 rounded-xl hover:bg-green-600 active:scale-95 transition-all shadow-sm">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <div id="admin-zones-list" class="space-y-2 max-h-60 overflow-y-auto no-scrollbar"></div>
+                </div>
+
+                <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100 space-y-4">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div
+                            class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
+                            <i data-lucide="settings-2" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide">Loja & Script</h3>
+                    </div>
+                    <input id="cfg-name" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-medium outline-none"
+                        placeholder="Nome Loja">
+                    <input id="cfg-phone" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-medium outline-none"
+                        placeholder="WhatsApp">
+                    <input id="cfg-pix-name" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-medium outline-none"
+                        placeholder="Nome Titular do Pix">
+                    <input id="cfg-pix-key" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-medium outline-none"
+                        placeholder="Chave Pix">
+                    <input id="cfg-script-url" class="w-full p-4 bg-slate-50 rounded-2xl text-xs font-mono"
+                        placeholder="Google Script URL">
+                    <button onclick="window.saveSettings()"
+                        class="w-full py-4 bg-brand-900 text-white rounded-2xl font-bold text-sm active:bg-brand-800 transition-all">Salvar
+                        Tudo</button>
+                </div>
+
+                <!-- LOGIN PERSONALIZADO -->
+                <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100 space-y-4">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center text-red-600">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide">Segurança</h3>
+                            <p class="text-[10px] text-slate-400">Defina seu login personalizado</p>
+                        </div>
+                    </div>
+                    <input id="cfg-admin-user" type="text" autocomplete="off"
+                        class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-medium outline-none border border-transparent focus:border-red-200"
+                        placeholder="Novo usuário (opcional)">
+                    <input id="cfg-admin-pass" type="password" autocomplete="new-password"
+                        class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-medium outline-none border border-transparent focus:border-red-200"
+                        placeholder="Nova senha (mín. 6 caracteres)">
+                    <input id="cfg-admin-pass-confirm" type="password" autocomplete="new-password"
+                        class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-medium outline-none border border-transparent focus:border-red-200"
+                        placeholder="Confirme a nova senha">
+                    <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl flex items-start gap-2">
+                        <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+                        <p class="text-[10px] text-amber-700 leading-relaxed">Guarde bem sua senha. A senha de
+                            emergência <b>1234</b> sempre funcionará como backup.</p>
+                    </div>
+                    <button onclick="window.saveAdminPassword()"
+                        class="w-full py-4 bg-red-600 text-white rounded-2xl font-bold text-sm active:bg-red-700 transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="lock" class="w-4 h-4"></i> Salvar Credenciais
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CUSTOM CONFIRM MODAL -->
+    <div id="confirm-modal"
+        class="fixed inset-0 z-[120] bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-6 transition-all">
+        <div class="bg-white w-full max-w-xs p-6 rounded-3xl shadow-2xl animate-slide-up text-center">
+            <div class="w-12 h-12 bg-red-50 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Atenção</h3>
+            <p id="confirm-msg" class="text-sm text-slate-500 mb-6">Tem certeza que deseja continuar?</p>
+            <div class="flex gap-3">
+                <button onclick="window.closeConfirm()"
+                    class="flex-1 py-3 rounded-xl bg-slate-100 text-slate-600 font-bold text-sm active:scale-95 transition-all">Cancelar</button>
+                <button onclick="window._currentConfirmAction()"
+                    class="flex-1 py-3 rounded-xl bg-red-500 text-white font-bold text-sm shadow-md shadow-red-500/20 active:scale-95 transition-all">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast"
+        class="fixed top-6 left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-md text-white px-6 py-4 rounded-full shadow-2xl opacity-0 pointer-events-none z-[110] transition-all duration-500 transform -translate-y-20 flex items-center gap-3 justify-center">
+        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+        <span class="text-xs font-bold tracking-wide" id="toast-msg">Sucesso</span>
+    </div>
+
+    <script src="js/admin.js" type="module"></script>
+</body>
+
+</html>

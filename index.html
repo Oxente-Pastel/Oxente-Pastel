@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta property="og:title" content="Oxente Pastel | Pedido Premium" />
+  <meta property="og:description" content="Pastel sequinho e frito na hora. Peça agora." />
+  <meta property="og:image" content="logo.jpeg" />
+
+  <link rel="apple-touch-icon" href="logo.jpeg" />
+
+  <title>Oxente Pastel</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              500: '#f97316',
+              600: '#ea580c',
+              900: '#7c2d12',
+            },
+            whatsapp: {
+              500: '#25D366',
+              600: '#128C7E',
+            }
+          },
+          boxShadow: {
+            'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+            'glow': '0 0 20px rgba(234, 88, 12, 0.3)',
+            'whatsapp': '0 10px 25px -5px rgba(37, 211, 102, 0.4)',
+          },
+          animation: {
+            'slide-up': 'slideUp 0.4s ease-out forwards',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 4s ease-in-out infinite',
+            'pulse-green': 'pulse-green 2s infinite',
+            'shimmer': 'shimmer 3s linear infinite',
+            'bounce-short': 'bounceShort 1s infinite',
+          },
+          keyframes: {
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-5px)' },
+            },
+            'pulse-green': {
+              '0%': { boxShadow: '0 0 0 0 rgba(37, 211, 102, 0.7)' },
+              '70%': { boxShadow: '0 0 0 15px rgba(37, 211, 102, 0)' },
+              '100%': { boxShadow: '0 0 0 0 rgba(37, 211, 102, 0)' },
+            },
+            shimmer: {
+              '0%': { transform: 'translateX(-150%)' },
+              '100%': { transform: 'translateX(150%)' }
+            },
+            bounceShort: {
+              '0%, 100%': { transform: 'translateY(-5%)', animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)' },
+              '50%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      -webkit-tap-highlight-color: transparent;
+      overscroll-behavior-y: contain;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    input,
+    textarea {
+      -webkit-user-select: text;
+      user-select: text;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .product-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      animation: slideUp 0.5s ease-out forwards;
+    }
+
+    .product-card:active {
+      transform: scale(0.97);
+    }
+
+    .product-card.selected {
+      border-color: #ea580c;
+      background: linear-gradient(to bottom right, #fffcf5, #ffedd5);
+      box-shadow: 0 8px 30px -5px rgba(234, 88, 12, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Estilo do Post */
+    .news-card {
+      background: linear-gradient(135deg, #fff, #f8fafc);
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+
+    .news-card.highlight {
+      background: linear-gradient(135deg, #fff7ed, #ffedd5);
+      border-color: #fdba74;
+    }
+
+    .check-circle {
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .selected .check-circle {
+      background-color: #ea580c;
+      border-color: #ea580c;
+      transform: scale(1.1) rotate(360deg);
+    }
+
+    .selected .check-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .spinner {
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-left-color: #fff;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .safe-pb {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .safe-pt {
+      padding-top: env(safe-area-inset-top);
+    }
+
+    /* MARCA D'ÁGUA */
+    .watermark-footer {
+      position: fixed;
+      left: 24px;
+      bottom: 128px;
+      z-index: 40;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .watermark-footer .wm-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.05),
+        0 10px 15px -3px rgba(0, 0, 0, 0.05),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .watermark-footer .wm-icon-box {
+      width: 16px;
+      height: 16px;
+      background: linear-gradient(135deg, #ea580c, #f97316);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(234, 88, 12, 0.25);
+    }
+
+    .watermark-footer .wm-icon-box svg {
+      width: 10px;
+      height: 10px;
+      color: white;
+      stroke-width: 3px;
+    }
+
+    .watermark-footer .wm-text {
+      font-family: "Outfit", sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Estilos para o Modal de Montar */
+    .option-checkbox:checked+div {
+      background-color: #ffedd5;
+      border-color: #ea580c;
+      color: #7c2d12;
+    }
+
+    .option-checkbox:checked+div .check-icon-sm {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .option-checkbox:disabled+div {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: #f8fafc;
+    }
+  </style>
+</head>
+
+<body class="antialiased text-slate-800 bg-slate-50 overflow-x-hidden">
+
+  <!-- MARCA D'ÁGUA -->
+  <div class="watermark-footer" aria-hidden="true">
+    <div class="wm-pill">
+      <div class="wm-icon-box">
+        <i data-lucide="code-2"></i>
+      </div>
+      <span class="wm-text">Ferreira Web Design</span>
+    </div>
+  </div>
+
+  <!-- SPLASH SCREEN -->
+  <div id="splash"
+    class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white transition-opacity duration-500">
+    <div class="relative mb-6">
+      <div class="absolute inset-0 bg-brand-500/20 blur-xl rounded-full animate-pulse"></div>
+      <div
+        class="w-32 h-32 rounded-full bg-brand-100 flex items-center justify-center border-4 border-white shadow-2xl relative z-10 animate-bounce-short overflow-hidden">
+        <img src="logo.jpeg"
+          onerror="this.style.opacity='0'; this.parentElement.innerHTML='<i data-lucide=\'chef-hat\' class=\'w-16 h-16 text-brand-500\'></i>'"
+          class="w-full h-full object-cover">
+      </div>
+    </div>
+    <h1 class="font-display font-bold text-3xl text-slate-900 tracking-tight">Oxente Pastel</h1>
+    <p class="text-slate-400 text-xs font-bold mt-3 tracking-widest uppercase bg-slate-100 px-3 py-1 rounded-full">
+      Esquentando o Óleo...</p>
+  </div>
+
+  <div class="app-container relative min-h-screen pb-32 z-10 flex flex-col items-center">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-40 glass shadow-sm w-full safe-pt">
+      <div class="px-5 h-[72px] flex items-center justify-between max-w-lg mx-auto">
+        <div class="flex items-center gap-3 cursor-pointer group" onclick="window.handleAdminClick()">
+          <div class="relative transition-transform group-active:scale-95">
+            <div
+              class="w-11 h-11 rounded-full bg-brand-100 border-2 border-white shadow-md flex items-center justify-center overflow-hidden">
+              <img src="logo.jpeg"
+                onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'chef-hat\' class=\'w-6 h-6 text-brand-600\'></i>'"
+                class="w-full h-full object-cover">
+            </div>
+            <div id="status-indicator"
+              class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-slate-300 border-2 border-white rounded-full transition-colors duration-500">
+            </div>
+          </div>
+          <div>
+            <h1 class="font-display font-extrabold text-lg leading-tight text-slate-900 tracking-tight"
+              id="store-title-display">Oxente Pastel</h1>
+            <div class="flex items-center gap-1">
+              <span id="status-dot" class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+              <p id="status-text" class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Conectando...
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <button onclick="window.toggleCart(true)"
+          class="relative p-3 rounded-2xl bg-white border border-slate-100 shadow-sm active:scale-90 text-brand-600 transition-all">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span id="cart-count"
+            class="absolute -top-1 -right-1 bg-brand-600 text-white text-[9px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white transform scale-0 transition-transform shadow-sm">0</span>
+        </button>
+      </div>
+
+      <div class="px-5 pb-3 pt-1 overflow-x-auto no-scrollbar w-full max-w-lg mx-auto">
+        <div class="flex gap-2 w-max">
+          <button onclick="window.filterCategory('Todos')"
+            class="cat-btn active px-6 py-2.5 rounded-full text-xs font-black bg-brand-900 text-white shadow-lg whitespace-nowrap active:scale-95 transition-all"
+            data-cat="Todos">Todos</button>
+          <button onclick="window.filterCategory('Açaí')"
+            class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
+            data-cat="Açaí">Açaí</button>
+          <button onclick="window.filterCategory('Pastéis')"
+            class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
+            data-cat="Pastéis">Pastéis</button>
+          <button onclick="window.filterCategory('Hambúrgueres')"
+            class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
+            data-cat="Hambúrgueres">Hambúrgueres</button>
+          <button onclick="window.filterCategory('Gourmet')"
+            class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
+            data-cat="Gourmet">Gourmet</button>
+          <button onclick="window.filterCategory('Porções')"
+            class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
+            data-cat="Porções">Porções</button>
+          <button onclick="window.filterCategory('Pastelão')"
+            class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
+            data-cat="Pastelão">Pastelão</button>
+          <button onclick="window.filterCategory('Bebidas')"
+            class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
+            data-cat="Bebidas">Bebidas</button>
+          <button onclick="window.filterCategory('Adicionais')"
+            class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
+            data-cat="Adicionais">Extras Hambúrguer</button>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main class="px-5 pt-6 w-full max-w-lg space-y-8 flex-1">
+
+      <!-- SEÇÃO DE DESTAQUES -->
+      <div class="w-[calc(100%+2.5rem)] -mx-5">
+        <div id="highlights-container"
+          class="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar px-5 pb-4 pt-1">
+        </div>
+      </div>
+
+      <!-- MURAL DE AVISOS -->
+      <div id="news-feed" class="space-y-4 empty:hidden"></div>
+
+      <div class="relative group">
+        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+          <i data-lucide="search"
+            class="w-5 h-5 text-slate-400 group-focus-within:text-brand-600 transition-colors"></i>
+        </div>
+        <input type="text" id="search-input" onkeyup="window.renderMenu()" placeholder="Qual a sua fome de hoje?"
+          class="w-full pl-12 pr-4 py-4 bg-white rounded-2xl border border-slate-100 shadow-soft text-sm font-semibold placeholder:text-slate-400 focus:ring-4 focus:ring-brand-500/10 focus:border-brand-500/50 outline-none transition-all">
+      </div>
+
+      <div id="products-grid" class="grid grid-cols-1 gap-4 pb-10"></div>
+
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+        <label class="flex items-center gap-2 text-xs font-black text-slate-400 uppercase mb-3 tracking-wide">
+          <i data-lucide="message-square" class="w-3.5 h-3.5 text-brand-500"></i> Alguma observação?
+        </label>
+        <textarea id="obs-input" rows="2"
+          class="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:bg-white focus:ring-4 focus:ring-brand-500/10 outline-none resize-none placeholder:text-slate-400 text-slate-700 transition-all"
+          placeholder="Ex: Tirar o milho, maionese à parte..." oninput="window.saveFormData()"></textarea>
+      </div>
+
+    </main>
+
+    <!-- WHATSAPP FLUTUANTE -->
+    <button onclick="window.openChat()"
+      class="fixed bottom-32 right-6 z-40 w-14 h-14 bg-whatsapp-500 text-white rounded-full shadow-whatsapp flex items-center justify-center animate-pulse-green active:scale-90 transition-all">
+      <i data-lucide="message-circle" class="w-8 h-8 fill-white/10"></i>
+    </button>
+
+    <!-- BARRA INFERIOR -->
+    <div
+      class="fixed bottom-0 left-0 right-0 z-50 p-4 bg-gradient-to-t from-white via-white to-transparent pt-10 pointer-events-none safe-pb">
+      <div class="max-w-lg mx-auto flex items-center gap-3 pointer-events-auto">
+
+        <div class="bg-white h-16 px-2 rounded-2xl shadow-xl border border-slate-100 flex items-center min-w-[120px]">
+          <button onclick="window.updateQty(-1)"
+            class="w-12 h-full flex items-center justify-center text-slate-400 active:text-brand-600 active:scale-75 transition-all text-2xl font-bold rounded-xl">-</button>
+          <span id="qty-display" class="flex-1 text-center font-display font-black text-xl text-slate-800">1</span>
+          <button onclick="window.updateQty(1)"
+            class="w-12 h-full flex items-center justify-center text-slate-400 active:text-brand-600 active:scale-75 transition-all text-2xl font-bold rounded-xl">+</button>
+        </div>
+        <button onclick="window.addToCart()" id="btn-add"
+          class="flex-1 h-16 bg-slate-900 text-white rounded-2xl shadow-xl flex items-center justify-between px-6 active:scale-95 transition-all disabled:opacity-50 disabled:grayscale group"
+          disabled>
+          <span class="text-xs font-black uppercase tracking-widest transition-all">Adicionar</span>
+          <span id="price-display" class="font-display font-bold text-lg bg-white/10 px-2 py-1 rounded-lg">R$
+            0,00</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARRINHO -->
+  <div id="cart-backdrop"
+    class="fixed inset-0 z-[60] bg-slate-900/40 backdrop-blur-sm invisible opacity-0 transition-all duration-300"
+    onclick="window.toggleCart(false)"></div>
+  <div id="cart-drawer"
+    class="fixed top-0 right-0 bottom-0 z-[70] w-full max-w-md bg-white shadow-2xl translate-x-full transition-transform duration-300 flex flex-col">
+    <div
+      class="px-6 py-6 border-b border-slate-50 flex items-center justify-between bg-white/90 backdrop-blur-md sticky top-0 z-10 safe-pt">
+      <div>
+        <h2 class="font-display font-black text-2xl text-slate-900 tracking-tight">Seu Pedido</h2>
+        <p class="text-xs text-slate-400 font-medium">Confira os itens escolhidos</p>
+      </div>
+      <button onclick="window.toggleCart(false)"
+        class="p-3 bg-slate-50 active:bg-slate-100 rounded-full transition-colors"><i data-lucide="x"
+          class="w-6 h-6 text-slate-500"></i></button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-50/50 no-scrollbar">
+      <div id="cart-items" class="space-y-4"></div>
+
+      <div id="checkout-form" class="hidden space-y-6 bg-white p-6 rounded-[2.5rem] border border-slate-100 shadow-sm">
+        <div class="space-y-4">
+          <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2"><i
+              data-lucide="user" class="w-4 h-4 text-brand-500"></i> Seus Dados</h3>
+          <div class="space-y-3">
+            <input id="client-name"
+              class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-bold border-2 border-transparent focus:border-brand-500/20 focus:bg-white outline-none transition-all"
+              placeholder="Nome Completo" oninput="window.saveFormData(); window.validateCheckout()">
+            <input id="client-phone"
+              class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-bold border-2 border-transparent focus:border-brand-500/20 focus:bg-white outline-none transition-all"
+              placeholder="Telefone (WhatsApp)" maxlength="15">
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2"><i
+              data-lucide="map-pin" class="w-4 h-4 text-brand-500"></i> Entrega</h3>
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="window.setDelivery('Retirada')" id="btn-retirada"
+              class="p-4 border-2 border-slate-100 rounded-2xl text-xs font-black text-slate-400 active:bg-slate-50 transition-all uppercase tracking-wide">Retirada</button>
+            <button onclick="window.setDelivery('Entrega')" id="btn-entrega"
+              class="p-4 border-2 border-slate-100 rounded-2xl text-xs font-black text-slate-400 active:bg-slate-50 transition-all uppercase tracking-wide">Entrega</button>
+          </div>
+          <div id="delivery-details" class="hidden space-y-3 animate-slide-up">
+            <select id="delivery-zone"
+              class="w-full p-4 bg-white border-2 border-slate-200 rounded-2xl text-sm font-bold outline-none focus:border-brand-500 transition-colors"
+              onchange="window.renderCart(); window.saveFormData()"></select>
+            <textarea id="client-address" rows="2"
+              class="w-full p-4 bg-white border-2 border-slate-200 rounded-2xl text-sm font-medium outline-none resize-none focus:border-brand-500 transition-colors"
+              placeholder="Endereço completo (Rua, Nº, Bairro, Ref)"
+              oninput="window.saveFormData(); window.validateCheckout()"></textarea>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2"><i
+              data-lucide="credit-card" class="w-4 h-4 text-brand-500"></i> Pagamento</h3>
+          <select id="payment-method"
+            class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-bold border-2 border-transparent focus:bg-white focus:border-brand-500/20 outline-none transition-all"
+            onchange="window.handlePaymentChange(); window.saveFormData()">
+            <option value="" disabled selected>Forma de pagamento...</option>
+            <option value="Pix">Pix (Copia e Cola)</option>
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Cartão">Cartão na Entrega</option>
+          </select>
+
+          <div id="pix-area"
+            class="hidden bg-brand-50 p-5 rounded-3xl border border-brand-100 text-center animate-slide-up">
+            <p id="pix-name-display" class="text-[10px] font-black text-brand-900 uppercase mb-1 tracking-widest">
+              Titular: Gabriel Santana Morais</p>
+            <p class="text-[10px] font-black text-brand-900 uppercase mb-3 tracking-widest">Chave Pix</p>
+            <div class="flex gap-2 mb-4">
+              <input id="pix-key" readonly
+                class="flex-1 text-[10px] text-center p-3 rounded-xl bg-white border border-brand-100 text-slate-500 outline-none font-mono">
+              <button onclick="window.copyPix()"
+                class="p-3 bg-brand-600 text-white rounded-xl active:bg-brand-700 transition-colors shadow-lg"><i
+                  data-lucide="copy" class="w-4 h-4"></i></button>
+            </div>
+            <p class="text-[10px] text-slate-500 font-medium">Copie a chave e envie o comprovante no WhatsApp ao
+              finalizar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-6 border-t border-slate-100 bg-white z-20 shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.1)] safe-pb">
+      <div class="flex justify-between items-end mb-5">
+        <span class="text-xs font-black text-slate-400 uppercase tracking-widest">Total Geral</span>
+        <span id="cart-total" class="text-3xl font-display font-black text-slate-900 tracking-tight">R$ 0,00</span>
+      </div>
+      <button onclick="window.sendOrder()" id="btn-checkout"
+        class="w-full py-5 rounded-2xl bg-gradient-to-r from-whatsapp-500 to-whatsapp-600 text-white font-black text-sm shadow-xl flex items-center justify-center gap-3 transition-all active:scale-95 disabled:opacity-50 disabled:grayscale"
+        disabled>
+        <div class="relative z-10 flex items-center gap-2">
+          <i data-lucide="message-circle" class="w-6 h-6 fill-white/20"></i>
+          <span>Finalizar no WhatsApp</span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL DE MONTAGEM DE PASTEL -->
+  <div id="pastel-modal"
+    class="fixed inset-0 z-[80] bg-slate-900/60 backdrop-blur-md hidden flex flex-col justify-end sm:justify-center transition-all">
+    <div
+      class="bg-white w-full max-w-lg mx-auto h-[85vh] sm:h-auto sm:max-h-[90vh] sm:rounded-[2rem] rounded-t-[2.5rem] shadow-2xl flex flex-col relative animate-slide-up">
+
+      <div
+        class="px-6 py-5 border-b border-slate-50 flex items-center justify-between bg-white rounded-t-[2.5rem] sticky top-0 z-10">
+        <div>
+          <h3 class="font-display font-bold text-xl text-slate-900" id="pastel-modal-title">Montar Pastel</h3>
+          <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Escolha até 4 itens</p>
+        </div>
+        <button onclick="window.closePastelModal()"
+          class="p-2 bg-slate-50 rounded-full hover:bg-slate-100 text-slate-400 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-6 space-y-6 no-scrollbar" id="pastel-options-container">
+      </div>
+
+      <div class="p-6 border-t border-slate-100 bg-white sm:rounded-b-[2rem] safe-pb">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center bg-slate-100 rounded-xl h-12 px-1">
+            <button onclick="window.updatePastelQty(-1)"
+              class="w-10 h-full flex items-center justify-center text-slate-500 font-bold text-lg active:scale-90 transition-transform">-</button>
+            <span id="pastel-qty-display" class="w-8 text-center font-display font-bold text-lg text-slate-800">1</span>
+            <button onclick="window.updatePastelQty(1)"
+              class="w-10 h-full flex items-center justify-center text-slate-500 font-bold text-lg active:scale-90 transition-transform">+</button>
+          </div>
+          <div class="text-right">
+            <span class="block text-[10px] font-bold text-slate-400 uppercase">Valor Total</span>
+            <span id="pastel-total-price" class="font-display font-black text-2xl text-brand-600">R$ 0,00</span>
+          </div>
+        </div>
+        <button onclick="window.addPastelToCart()"
+          class="w-full py-4 bg-brand-600 text-white rounded-xl font-bold text-sm shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2">
+          <span>Adicionar ao Pedido</span>
+          <i data-lucide="check" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AÇAÍ CUSTOMIZATION MODAL -->
+  <div id="acai-modal"
+    class="fixed inset-0 z-[80] bg-slate-900/60 backdrop-blur-md hidden flex flex-col justify-end sm:justify-center transition-all">
+    <div
+      class="bg-white w-full max-w-lg mx-auto h-[92vh] sm:h-auto sm:max-h-[90vh] sm:rounded-[2rem] rounded-t-[2.5rem] shadow-2xl flex flex-col relative animate-slide-up">
+
+      <div
+        class="px-6 py-5 border-b border-slate-50 flex items-center justify-between bg-gradient-to-r from-purple-50 to-white rounded-t-[2.5rem] sticky top-0 z-10">
+        <div>
+          <h3 class="font-display font-bold text-xl text-slate-900 flex items-center gap-2">
+            <span class="text-2xl">🍇</span>
+            <span id="acai-modal-title">Açaí</span>
+          </h3>
+          <p class="text-[10px] text-purple-500 font-bold uppercase tracking-wider mt-0.5">Monte os adicionais do seu
+            açaí</p>
+        </div>
+        <button onclick="window.closeAcaiModal()"
+          class="p-2 bg-slate-50 rounded-full hover:bg-slate-100 text-slate-400 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-5 space-y-5 no-scrollbar" id="acai-options-container">
+        <!-- Rendered by openAcaiModal() -->
+      </div>
+
+      <div class="p-5 border-t border-slate-100 bg-white sm:rounded-b-[2rem] safe-pb">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center bg-slate-100 rounded-xl h-12 px-1">
+            <button onclick="window.updateAcaiQty(-1)"
+              class="w-10 h-full flex items-center justify-center text-slate-500 font-bold text-lg active:scale-90 transition-transform">-</button>
+            <span id="acai-qty-display" class="w-8 text-center font-display font-bold text-lg text-slate-800">1</span>
+            <button onclick="window.updateAcaiQty(1)"
+              class="w-10 h-full flex items-center justify-center text-slate-500 font-bold text-lg active:scale-90 transition-transform">+</button>
+          </div>
+          <div class="text-right">
+            <span class="block text-[10px] font-bold text-slate-400 uppercase">Valor Total</span>
+            <span id="acai-total-price" class="font-display font-black text-2xl text-purple-600">R$ 0,00</span>
+          </div>
+        </div>
+        <button onclick="window.addAcaiToCart()"
+          class="w-full py-4 bg-purple-600 text-white rounded-xl font-bold text-sm shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2">
+          <span>Adicionar ao Pedido</span>
+          <i data-lucide="check" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast"
+    class="fixed top-6 left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-md text-white px-6 py-4 rounded-full shadow-2xl opacity-0 pointer-events-none z-[110] transition-all duration-500 transform -translate-y-20 flex items-center gap-3 justify-center">
+    <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+    <span class="text-xs font-bold tracking-wide" id="toast-msg">Sucesso</span>
+  </div>
+
+  <script src="js/client.js" type="module"></script>
+</body>
+
+</html>
