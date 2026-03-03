@@ -287,6 +287,13 @@
   <!-- SPLASH SCREEN -->
   <div id="splash"
     class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white transition-opacity duration-500">
+    <script>
+      // Failsafe: Hide splash even if client.js crashes
+      setTimeout(() => {
+        const s = document.getElementById('splash');
+        if (s) { s.style.opacity = '0'; setTimeout(() => s.style.display = 'none', 500); }
+      }, 4000);
+    </script>
     <div class="relative mb-6">
       <div class="absolute inset-0 bg-brand-500/20 blur-xl rounded-full animate-pulse"></div>
       <div
