@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -133,7 +133,6 @@
       transform: translateY(-2px);
     }
 
-    /* Estilo do Post */
     .news-card {
       background: linear-gradient(135deg, #fff, #f8fafc);
       border: 1px solid #e2e8f0;
@@ -184,7 +183,6 @@
       padding-top: env(safe-area-inset-top);
     }
 
-    /* MARCA D'ÁGUA */
     .watermark-footer {
       position: fixed;
       left: 24px;
@@ -218,10 +216,7 @@
       border: 1px solid rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      box-shadow:
-        0 4px 6px -1px rgba(0, 0, 0, 0.05),
-        0 10px 15px -3px rgba(0, 0, 0, 0.05),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -252,7 +247,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* Estilos para o Modal de Montar */
     .option-checkbox:checked+div {
       background-color: #ffedd5;
       border-color: #ea580c;
@@ -277,9 +271,7 @@
   <!-- MARCA D'ÁGUA -->
   <div class="watermark-footer" aria-hidden="true">
     <div class="wm-pill">
-      <div class="wm-icon-box">
-        <i data-lucide="code-2"></i>
-      </div>
+      <div class="wm-icon-box"><i data-lucide="code-2"></i></div>
       <span class="wm-text">Ferreira Web Design</span>
     </div>
   </div>
@@ -287,13 +279,6 @@
   <!-- SPLASH SCREEN -->
   <div id="splash"
     class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white transition-opacity duration-500">
-    <script>
-      // Failsafe: Hide splash even if client.js crashes
-      setTimeout(() => {
-        const s = document.getElementById('splash');
-        if (s) { s.style.opacity = '0'; setTimeout(() => s.style.display = 'none', 500); }
-      }, 4000);
-    </script>
     <div class="relative mb-6">
       <div class="absolute inset-0 bg-brand-500/20 blur-xl rounded-full animate-pulse"></div>
       <div
@@ -326,11 +311,13 @@
             </div>
           </div>
           <div>
-            <h1 class="font-display font-extrabold text-lg leading-tight text-slate-900 tracking-tight"
-              id="store-title-display">Oxente Pastel</h1>
+            <h1 class="font-display font-extrabold text-lg leading-tight text-slate-900 tracking-tight">
+              Oxente
+              Pastel</h1>
             <div class="flex items-center gap-1">
               <span id="status-dot" class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
-              <p id="status-text" class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Conectando...
+              <p id="status-text" class="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                Conectando...
               </p>
             </div>
           </div>
@@ -349,31 +336,44 @@
           <button onclick="window.filterCategory('Todos')"
             class="cat-btn active px-6 py-2.5 rounded-full text-xs font-black bg-brand-900 text-white shadow-lg whitespace-nowrap active:scale-95 transition-all"
             data-cat="Todos">Todos</button>
-          <button onclick="window.filterCategory('Açaí')"
-            class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
-            data-cat="Açaí">Açaí</button>
           <button onclick="window.filterCategory('Pastéis')"
             class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
             data-cat="Pastéis">Pastéis</button>
+          <button onclick="window.filterCategory('Pastelão')"
+            class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
+            data-cat="Pastelão">Pastelão</button>
+          <button onclick="window.filterCategory('Monte o Seu')"
+            class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
+            data-cat="Monte o Seu">Monte o Seu</button>
           <button onclick="window.filterCategory('Hambúrgueres')"
             class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
             data-cat="Hambúrgueres">Hambúrgueres</button>
           <button onclick="window.filterCategory('Gourmet')"
             class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
             data-cat="Gourmet">Gourmet</button>
-          <button onclick="window.filterCategory('Porções')"
+          <button onclick="window.filterCategory('Batata Frita')"
             class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
-            data-cat="Porções">Porções</button>
-          <button onclick="window.filterCategory('Pastelão')"
+            data-cat="Batata Frita">Batata Frita</button>
+          <button onclick="window.filterCategory('Açaí')"
             class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
-            data-cat="Pastelão">Pastelão</button>
+            data-cat="Açaí">Açaí</button>
           <button onclick="window.filterCategory('Bebidas')"
             class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
             data-cat="Bebidas">Bebidas</button>
-          <button onclick="window.filterCategory('Adicionais')"
-            class="cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all"
-            data-cat="Adicionais">Extras Hambúrguer</button>
+        </div>
+      </div>
 
+      <!-- SUB-ABAS PASTÉIS -->
+      <div id="pastel-subtabs"
+        class="px-5 py-2 pb-4 hidden overflow-x-auto no-scrollbar w-full max-w-lg mx-auto animate-slide-up">
+        <div class="flex gap-2 p-1 bg-slate-100/50 rounded-2xl w-max border border-slate-100">
+          <button onclick="window.filterPastelSub('Salgados')" id="sub-Salgados"
+            class="px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all bg-brand-900 text-white shadow-sm">Salgados</button>
+          <button onclick="window.filterPastelSub('Doces')" id="sub-Doces"
+            class="px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all text-slate-400 hover:text-slate-600">Doces</button>
+          <button onclick="window.filterPastelSub('Monte o Seu')" id="sub-Monte o Seu"
+            class="px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all text-slate-400 hover:text-slate-600">Monte
+            o Seu</button>
         </div>
       </div>
     </header>
@@ -381,14 +381,11 @@
     <!-- CONTEÚDO -->
     <main class="px-5 pt-6 w-full max-w-lg space-y-8 flex-1">
 
-      <!-- SEÇÃO DE DESTAQUES -->
       <div class="w-[calc(100%+2.5rem)] -mx-5">
         <div id="highlights-container"
-          class="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar px-5 pb-4 pt-1">
-        </div>
+          class="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar px-5 pb-4 pt-1"></div>
       </div>
 
-      <!-- MURAL DE AVISOS -->
       <div id="news-feed" class="space-y-4 empty:hidden"></div>
 
       <div class="relative group">
@@ -423,7 +420,6 @@
     <div
       class="fixed bottom-0 left-0 right-0 z-50 p-4 bg-gradient-to-t from-white via-white to-transparent pt-10 pointer-events-none safe-pb">
       <div class="max-w-lg mx-auto flex items-center gap-3 pointer-events-auto">
-
         <div class="bg-white h-16 px-2 rounded-2xl shadow-xl border border-slate-100 flex items-center min-w-[120px]">
           <button onclick="window.updateQty(-1)"
             class="w-12 h-full flex items-center justify-center text-slate-400 active:text-brand-600 active:scale-75 transition-all text-2xl font-bold rounded-xl">-</button>
@@ -442,7 +438,7 @@
     </div>
   </div>
 
-  <!-- CARRINHO -->
+  <!-- CARRINHO DRAWER -->
   <div id="cart-backdrop"
     class="fixed inset-0 z-[60] bg-slate-900/40 backdrop-blur-sm invisible opacity-0 transition-all duration-300"
     onclick="window.toggleCart(false)"></div>
@@ -510,8 +506,8 @@
 
           <div id="pix-area"
             class="hidden bg-brand-50 p-5 rounded-3xl border border-brand-100 text-center animate-slide-up">
-            <p id="pix-name-display" class="text-[10px] font-black text-brand-900 uppercase mb-1 tracking-widest">
-              Titular: Gabriel Santana Morais</p>
+            <p class="text-[10px] font-black text-brand-900 uppercase mb-1 tracking-widest">Titular: <span
+                id="pix-name-display"></span></p>
             <p class="text-[10px] font-black text-brand-900 uppercase mb-3 tracking-widest">Chave Pix</p>
             <div class="flex gap-2 mb-4">
               <input id="pix-key" readonly
@@ -520,7 +516,8 @@
                 class="p-3 bg-brand-600 text-white rounded-xl active:bg-brand-700 transition-colors shadow-lg"><i
                   data-lucide="copy" class="w-4 h-4"></i></button>
             </div>
-            <p class="text-[10px] text-slate-500 font-medium">Copie a chave e envie o comprovante no WhatsApp ao
+            <p class="text-[10px] text-slate-500 font-medium">Copie a chave e envie o comprovante no
+              WhatsApp ao
               finalizar.</p>
           </div>
         </div>
@@ -530,7 +527,8 @@
     <div class="p-6 border-t border-slate-100 bg-white z-20 shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.1)] safe-pb">
       <div class="flex justify-between items-end mb-5">
         <span class="text-xs font-black text-slate-400 uppercase tracking-widest">Total Geral</span>
-        <span id="cart-total" class="text-3xl font-display font-black text-slate-900 tracking-tight">R$ 0,00</span>
+        <span id="cart-total" class="text-3xl font-display font-black text-slate-900 tracking-tight">R$
+          0,00</span>
       </div>
       <button onclick="window.sendOrder()" id="btn-checkout"
         class="w-full py-5 rounded-2xl bg-gradient-to-r from-whatsapp-500 to-whatsapp-600 text-white font-black text-sm shadow-xl flex items-center justify-center gap-3 transition-all active:scale-95 disabled:opacity-50 disabled:grayscale"
@@ -552,8 +550,10 @@
       <div
         class="px-6 py-5 border-b border-slate-50 flex items-center justify-between bg-white rounded-t-[2.5rem] sticky top-0 z-10">
         <div>
-          <h3 class="font-display font-bold text-xl text-slate-900" id="pastel-modal-title">Montar Pastel</h3>
-          <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Escolha até 4 itens</p>
+          <h3 class="font-display font-bold text-xl text-slate-900" id="pastel-modal-title">Montar Pastel
+          </h3>
+          <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Escolha até 3 acomps + 1
+            temp</p>
         </div>
         <button onclick="window.closePastelModal()"
           class="p-2 bg-slate-50 rounded-full hover:bg-slate-100 text-slate-400 transition-colors">
@@ -561,8 +561,7 @@
         </button>
       </div>
 
-      <div class="flex-1 overflow-y-auto p-6 space-y-6 no-scrollbar" id="pastel-options-container">
-      </div>
+      <div class="flex-1 overflow-y-auto p-6 space-y-6 no-scrollbar" id="pastel-options-container"></div>
 
       <div class="p-6 border-t border-slate-100 bg-white sm:rounded-b-[2rem] safe-pb">
         <div class="flex items-center justify-between mb-4">
@@ -575,7 +574,8 @@
           </div>
           <div class="text-right">
             <span class="block text-[10px] font-bold text-slate-400 uppercase">Valor Total</span>
-            <span id="pastel-total-price" class="font-display font-black text-2xl text-brand-600">R$ 0,00</span>
+            <span id="pastel-total-price" class="font-display font-black text-2xl text-brand-600">R$
+              0,00</span>
           </div>
         </div>
         <button onclick="window.addPastelToCart()"
@@ -587,31 +587,26 @@
     </div>
   </div>
 
-  <!-- AÇAÍ CUSTOMIZATION MODAL -->
+  <!-- AÇAÍ MODAL -->
   <div id="acai-modal"
     class="fixed inset-0 z-[80] bg-slate-900/60 backdrop-blur-md hidden flex flex-col justify-end sm:justify-center transition-all">
     <div
       class="bg-white w-full max-w-lg mx-auto h-[92vh] sm:h-auto sm:max-h-[90vh] sm:rounded-[2rem] rounded-t-[2.5rem] shadow-2xl flex flex-col relative animate-slide-up">
-
       <div
         class="px-6 py-5 border-b border-slate-50 flex items-center justify-between bg-gradient-to-r from-purple-50 to-white rounded-t-[2.5rem] sticky top-0 z-10">
         <div>
-          <h3 class="font-display font-bold text-xl text-slate-900 flex items-center gap-2">
-            <span class="text-2xl">🍇</span>
-            <span id="acai-modal-title">Açaí</span>
-          </h3>
-          <p class="text-[10px] text-purple-500 font-bold uppercase tracking-wider mt-0.5">Monte os adicionais do seu
+          <h3 class="font-display font-bold text-xl text-slate-900 flex items-center gap-2"><span
+              class="text-2xl">🍇</span> <span id="acai-modal-title">Açaí</span></h3>
+          <p class="text-[10px] text-purple-500 font-bold uppercase tracking-wider mt-0.5">Monte os
+            adicionais do seu
             açaí</p>
         </div>
         <button onclick="window.closeAcaiModal()"
-          class="p-2 bg-slate-50 rounded-full hover:bg-slate-100 text-slate-400 transition-colors">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
+          class="p-2 bg-slate-50 rounded-full hover:bg-slate-100 text-slate-400 transition-colors"><i data-lucide="x"
+            class="w-5 h-5"></i></button>
       </div>
 
-      <div class="flex-1 overflow-y-auto p-5 space-y-5 no-scrollbar" id="acai-options-container">
-        <!-- Rendered by openAcaiModal() -->
-      </div>
+      <div class="flex-1 overflow-y-auto p-5 space-y-5 no-scrollbar" id="acai-options-container"></div>
 
       <div class="p-5 border-t border-slate-100 bg-white sm:rounded-b-[2rem] safe-pb">
         <div class="flex items-center justify-between mb-4">
@@ -624,7 +619,8 @@
           </div>
           <div class="text-right">
             <span class="block text-[10px] font-bold text-slate-400 uppercase">Valor Total</span>
-            <span id="acai-total-price" class="font-display font-black text-2xl text-purple-600">R$ 0,00</span>
+            <span id="acai-total-price" class="font-display font-black text-2xl text-purple-600">R$
+              0,00</span>
           </div>
         </div>
         <button onclick="window.addAcaiToCart()"
@@ -636,6 +632,508 @@
     </div>
   </div>
 
+
+  <!-- SUCO MODAL -->
+  <div id="suco-modal"
+    class="fixed inset-0 z-[80] bg-slate-900/60 backdrop-blur-md hidden flex flex-col justify-end sm:justify-center transition-all">
+    <div
+      class="bg-white w-full max-w-lg mx-auto h-[92vh] sm:h-auto sm:max-h-[90vh] sm:rounded-[2rem] rounded-t-[2.5rem] shadow-2xl flex flex-col relative animate-slide-up">
+      <div
+        class="px-6 py-5 border-b border-slate-50 flex items-center justify-between bg-gradient-to-r from-orange-50 to-white rounded-t-[2.5rem] sticky top-0 z-10">
+        <div>
+          <h3 class="font-display font-bold text-xl text-slate-900 flex items-center gap-2"><span
+              class="text-2xl">🥤</span> <span id="suco-modal-title">Suco da Fruta</span></h3>
+          <p class="text-[10px] text-orange-500 font-bold uppercase tracking-wider mt-0.5">Escolha o seu
+            sabor favorito</p>
+        </div>
+        <button onclick="window.closeSucoModal()"
+          class="p-2 bg-slate-50 rounded-full hover:bg-slate-100 text-slate-400 transition-colors"><i data-lucide="x"
+            class="w-5 h-5"></i></button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-5 space-y-5 no-scrollbar" id="suco-options-container"></div>
+
+      <div class="p-5 border-t border-slate-100 bg-white sm:rounded-b-[2rem] safe-pb">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center bg-slate-100 rounded-xl h-12 px-1">
+            <button onclick="window.updateSucoQty(-1)"
+              class="w-10 h-full flex items-center justify-center text-slate-500 font-bold text-lg active:scale-90 transition-transform">-</button>
+            <span id="suco-qty-display" class="w-8 text-center font-display font-bold text-lg text-slate-800">1</span>
+            <button onclick="window.updateSucoQty(1)"
+              class="w-10 h-full flex items-center justify-center text-slate-500 font-bold text-lg active:scale-90 transition-transform">+</button>
+          </div>
+          <div class="text-right">
+            <span class="block text-[10px] font-bold text-slate-400 uppercase">Valor Total</span>
+            <span id="suco-total-price" class="font-display font-black text-2xl text-orange-600">R$
+              0,00</span>
+          </div>
+        </div>
+        <button onclick="window.addSucoToCart()"
+          class="w-full py-4 bg-orange-600 text-white rounded-xl font-bold text-sm shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2">
+          <span>Adicionar ao Pedido</span>
+          <i data-lucide="check" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- BURGER MODAL -->
+  <div id="burger-modal"
+    class="fixed inset-0 z-[80] bg-slate-900/60 backdrop-blur-md hidden flex flex-col justify-end sm:justify-center transition-all">
+    <div
+      class="bg-white w-full max-w-lg mx-auto h-[92vh] sm:h-auto sm:max-h-[90vh] sm:rounded-[2rem] rounded-t-[2.5rem] shadow-2xl flex flex-col relative animate-slide-up">
+      <div
+        class="px-6 py-5 border-b border-slate-50 flex items-center justify-between bg-gradient-to-r from-orange-50 to-white rounded-t-[2.5rem] sticky top-0 z-10">
+        <div>
+          <h3 class="font-display font-bold text-xl text-slate-900 flex items-center gap-2"><span
+              class="text-2xl">🍔</span> <span id="burger-modal-title">Hambúrguer</span></h3>
+          <p class="text-[10px] text-orange-500 font-bold uppercase tracking-wider mt-0.5">Adicione Extras
+            (Opcional)</p>
+        </div>
+        <button onclick="window.closeBurgerModal()"
+          class="p-2 bg-slate-50 rounded-full hover:bg-slate-100 text-slate-400 transition-colors"><i data-lucide="x"
+            class="w-5 h-5"></i></button>
+      </div>
+      <div class="flex-1 overflow-y-auto p-5 space-y-5 no-scrollbar" id="burger-options-container"></div>
+      <div class="p-5 border-t border-slate-100 bg-white sm:rounded-b-[2rem] safe-pb">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center bg-slate-100 rounded-xl h-12 px-1">
+            <button onclick="window.updateBurgerQty(-1)"
+              class="w-10 h-full flex items-center justify-center text-slate-500 font-bold text-lg active:scale-90 transition-transform">-</button>
+            <span id="burger-qty-display" class="w-8 text-center font-display font-bold text-lg text-slate-800">1</span>
+            <button onclick="window.updateBurgerQty(1)"
+              class="w-10 h-full flex items-center justify-center text-slate-500 font-bold text-lg active:scale-90 transition-transform">+</button>
+          </div>
+          <div class="text-right">
+            <span class="block text-[10px] font-bold text-slate-400 uppercase">Valor Total</span>
+            <span id="burger-total-price" class="font-display font-black text-2xl text-orange-600">R$
+              0,00</span>
+          </div>
+        </div>
+        <button onclick="window.addBurgerToCart()"
+          class="w-full py-4 bg-orange-600 text-white rounded-xl font-bold text-sm shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2">
+          <span>Adicionar ao Pedido</span>
+          <i data-lucide="check" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BATATA MODAL -->
+  <div id="batata-modal"
+    class="fixed inset-0 z-[80] bg-slate-900/60 backdrop-blur-md hidden flex flex-col justify-end sm:justify-center transition-all">
+    <div
+      class="bg-white w-full max-w-lg mx-auto h-[92vh] sm:h-auto sm:max-h-[90vh] sm:rounded-[2rem] rounded-t-[2.5rem] shadow-2xl flex flex-col relative animate-slide-up">
+      <div
+        class="px-6 py-5 border-b border-slate-50 flex items-center justify-between bg-gradient-to-r from-yellow-50 to-white rounded-t-[2.5rem] sticky top-0 z-10">
+        <div>
+          <h3 class="font-display font-bold text-xl text-slate-900 flex items-center gap-2"><span
+              class="text-2xl">🍟</span> <span id="batata-modal-title">Batata Frita</span></h3>
+          <p class="text-[10px] text-yellow-600 font-bold uppercase tracking-wider mt-0.5">Escolha até 3
+            opções exclusivas</p>
+        </div>
+        <button onclick="window.closeBatataModal()"
+          class="p-2 bg-slate-50 rounded-full hover:bg-slate-100 text-slate-400 transition-colors"><i data-lucide="x"
+            class="w-5 h-5"></i></button>
+      </div>
+      <div class="flex-1 overflow-y-auto p-5 space-y-5 no-scrollbar" id="batata-options-container"></div>
+      <div class="p-5 border-t border-slate-100 bg-white sm:rounded-b-[2rem] safe-pb">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center bg-slate-100 rounded-xl h-12 px-1">
+            <button onclick="window.updateBatataQty(-1)"
+              class="w-10 h-full flex items-center justify-center text-slate-500 font-bold text-lg active:scale-90 transition-transform">-</button>
+            <span id="batata-qty-display" class="w-8 text-center font-display font-bold text-lg text-slate-800">1</span>
+            <button onclick="window.updateBatataQty(1)"
+              class="w-10 h-full flex items-center justify-center text-slate-500 font-bold text-lg active:scale-90 transition-transform">+</button>
+          </div>
+          <div class="text-right">
+            <span class="block text-[10px] font-bold text-slate-400 uppercase">Valor Total</span>
+            <span id="batata-total-price" class="font-display font-black text-2xl text-yellow-600">R$
+              0,00</span>
+          </div>
+        </div>
+        <button onclick="window.addBatataToCart()"
+          class="w-full py-4 bg-yellow-500 text-slate-900 rounded-xl font-black text-sm shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2">
+          <span>Adicionar ao Pedido</span>
+          <i data-lucide="check" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- PAINEL ADMIN E LOGIN -->
+  <div id="admin-modal"
+    class="fixed inset-0 z-[80] bg-slate-900/60 backdrop-blur-md hidden flex items-center justify-center p-6 transition-all">
+    <div class="bg-white w-full max-w-sm p-8 rounded-[2rem] shadow-2xl animate-slide-up relative">
+      <button onclick="document.getElementById('admin-modal').classList.add('hidden')"
+        class="absolute top-5 right-5 text-slate-300 hover:text-slate-600"><i data-lucide="x"
+          class="w-6 h-6"></i></button>
+      <div class="text-center mb-8">
+        <div
+          class="w-16 h-16 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-brand-600 shadow-inner">
+          <i data-lucide="lock" class="w-8 h-8"></i>
+        </div>
+        <h3 class="font-display font-bold text-2xl text-slate-900">Admin Access</h3>
+      </div>
+      <div class="space-y-4">
+        <input type="email" id="adm-email" placeholder="E-mail"
+          class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-brand-500 outline-none">
+        <input type="password" id="adm-pass" placeholder="Senha"
+          class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-brand-500 outline-none">
+        <button onclick="window.adminLogin()"
+          class="w-full py-4 bg-brand-900 text-white rounded-2xl font-bold text-sm shadow-lg">Entrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="admin-panel" class="fixed inset-0 z-[90] bg-slate-50 hidden overflow-y-auto">
+    <div
+      class="bg-white/80 backdrop-blur-xl px-6 py-5 sticky top-0 z-10 flex justify-between items-center border-b border-slate-100 safe-pt shadow-sm">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-brand-900 flex items-center justify-center text-white shadow-lg">
+          <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h2 class="font-display font-black text-lg text-slate-900 tracking-tight">Dashboard</h2>
+          <p id="admin-status-text"
+            class="text-[9px] text-green-600 font-extrabold flex items-center gap-1.5 px-2 py-0.5 bg-green-50 rounded-full w-fit">
+            <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+            PAINEL ATIVO
+          </p>
+        </div>
+      </div>
+      <button onclick="window.adminLogout()"
+        class="text-[10px] font-black text-slate-400 hover:text-red-500 bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 uppercase tracking-widest transition-all">Sair</button>
+    </div>
+
+    <div class="p-6 space-y-6 max-w-lg mx-auto pb-24">
+      <div
+        class="flex p-1.5 bg-slate-100/50 backdrop-blur-md rounded-2xl mb-6 overflow-x-auto no-scrollbar border border-slate-200/50 shadow-inner">
+        <button onclick="window.switchAdminTab('pedidos')" id="tab-pedidos"
+          class="px-5 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-xl bg-brand-900 text-white shadow-xl transition-all shrink-0">Pedidos</button>
+        <button onclick="window.switchAdminTab('estoque')" id="tab-estoque"
+          class="px-5 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-xl text-slate-500 transition-all shrink-0">Estoque</button>
+        <button onclick="window.switchAdminTab('avisos')" id="tab-avisos"
+          class="px-5 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-xl text-slate-500 transition-all shrink-0">Avisos</button>
+        <button onclick="window.switchAdminTab('destaques')" id="tab-destaques"
+          class="px-5 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-xl text-slate-500 transition-all shrink-0">Destaques</button>
+        <button onclick="window.switchAdminTab('config')" id="tab-config"
+          class="px-5 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-xl text-slate-500 transition-all shrink-0">Ajustes</button>
+      </div>
+
+      <!-- PAINEL PEDIDOS -->
+      <div id="view-pedidos" class="space-y-4">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600"><i
+              data-lucide="list-ordered" class="w-5 h-5"></i></div>
+          <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide">Gerenciador de Pedidos</h3>
+        </div>
+        <div id="orders-list" class="space-y-3"></div>
+      </div>
+
+      <!-- PAINEL ESTOQUE (COM SUB-TABS) -->
+      <div id="view-estoque" class="hidden space-y-4">
+        <!-- Sub-Navegação Estoque -->
+        <div class="flex gap-2 mb-6 border-b border-slate-100 pb-2 overflow-x-auto no-scrollbar">
+          <button onclick="window.switchEstoqueSubTab('produtos')" id="subtab-produtos"
+            class="text-xs font-black pb-2 border-b-2 border-brand-600 text-brand-900 transition-all uppercase tracking-widest px-2">Produtos</button>
+          <button onclick="window.switchEstoqueSubTab('ingredientes')" id="subtab-ingredientes"
+            class="text-xs font-bold pb-2 border-b-2 border-transparent text-slate-400 hover:text-slate-600 transition-all uppercase tracking-widest px-2">Ingredientes</button>
+        </div>
+
+        <!-- SUB-ABA: PRODUTOS -->
+        <div id="estoque-produtos" class="space-y-4">
+          <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100 mb-4">
+            <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide mb-4 flex items-center gap-2">
+              <i data-lucide="plus-circle" class="w-4 h-4 text-brand-500"></i> Novo Produto
+            </h3>
+            <div class="space-y-3">
+              <input id="new-prod-name" placeholder="Nome do Produto"
+                class="w-full p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none border border-transparent focus:border-brand-200 transition-all">
+              <input id="new-prod-desc" placeholder="Descrição (ingredientes...)"
+                class="w-full p-3 bg-slate-50 rounded-xl text-xs font-medium outline-none border border-transparent focus:border-brand-200 transition-all">
+              <div class="flex gap-2">
+                <input id="new-prod-price" type="number" step="0.1" placeholder="Preço (R$)"
+                  class="flex-1 p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none border border-transparent focus:border-brand-200 transition-all">
+                <select id="new-prod-cat"
+                  class="flex-1 p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none border border-transparent focus:border-brand-200 transition-all">
+                  <option value="Pastéis">Pastéis</option>
+                  <option value="Salgados">Salgados</option>
+                  <option value="Doces">Doces</option>
+                  <option value="Açaí">Açaí</option>
+                  <option value="Hambúrgueres">Hambúrgueres</option>
+                  <option value="Gourmet">Gourmet</option>
+                  <option value="Batata Frita">Batata Frita</option>
+                  <option value="Pastelão">Pastelão</option>
+                  <option value="Bebidas">Bebidas</option>
+                  <option value="Monte o Seu">Monte o Seu</option>
+                </select>
+              </div>
+              <div class="flex gap-2">
+                <select id="new-prod-sub"
+                  class="flex-1 p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none border border-transparent focus:border-brand-200 transition-all">
+                  <option value="">Tipo (Opcional)</option>
+                  <option value="Salgado">Salgado</option>
+                  <option value="Doce">Doce</option>
+                </select>
+                <button onclick="window.addProduct()"
+                  class="bg-brand-600 text-white px-6 rounded-xl font-black text-xs hover:bg-brand-700 active:scale-95 transition-all shadow-md">Adicionar</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-orange-600">
+                <i data-lucide="package" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide">Produtos no Cardápio</h3>
+            </div>
+            <div class="mb-4">
+              <input id="stock-search" oninput="window.renderStockAdmin()" placeholder="🔍 Buscar no estoque..."
+                class="w-full p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none border border-slate-100 focus:border-brand-200 transition-all">
+            </div>
+            <div id="stock-list" class="space-y-6 max-h-[60vh] overflow-y-auto pr-1 no-scrollbar pb-4 ">
+            </div>
+          </div>
+        </div>
+
+        <!-- SUB-ABA: INGREDIENTES -->
+        <div id="estoque-ingredientes" class="hidden space-y-4">
+          <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100 mb-4">
+            <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide mb-4">Gerenciar Monte o Seu</h3>
+            <div class="space-y-4">
+              <div class="flex flex-col gap-1">
+                <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Nova Base</label>
+                <div class="flex gap-2">
+                  <input id="new-ing-base" placeholder="Ex: Tradicional"
+                    class="flex-1 p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none">
+                  <button onclick="window.addIngredient('base')" class="bg-brand-600 text-white p-3 rounded-xl"><i
+                      data-lucide="plus" class="w-4 h-4"></i></button>
+                </div>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Novo Queijo</label>
+                <div class="flex gap-2">
+                  <input id="new-ing-queijos" placeholder="Ex: Mussarela"
+                    class="flex-1 p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none">
+                  <button onclick="window.addIngredient('queijos')" class="bg-brand-600 text-white p-3 rounded-xl"><i
+                      data-lucide="plus" class="w-4 h-4"></i></button>
+                </div>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Novo Extra</label>
+                <div class="flex gap-2">
+                  <input id="new-ing-extras" placeholder="Ex: Bacon"
+                    class="flex-1 p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none">
+                  <button onclick="window.addIngredient('extras')" class="bg-brand-600 text-white p-3 rounded-xl"><i
+                      data-lucide="plus" class="w-4 h-4"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+            <div id="stock-ing-list" class="space-y-4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAINEL AVISOS -->
+      <div id="view-avisos" class="hidden space-y-4">
+        <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+          <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide mb-4 flex items-center gap-2">
+            <i data-lucide="megaphone" class="w-4 h-4 text-brand-500"></i> Criar Aviso
+          </h3>
+          <div class="space-y-3">
+            <input id="post-title" placeholder="Título (Ex: Promoção do Dia)"
+              class="w-full p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none focus:ring-2 focus:ring-brand-200">
+            <textarea id="post-msg" rows="3" placeholder="Mensagem para seus clientes..."
+              class="w-full p-3 bg-slate-50 rounded-xl text-xs font-medium outline-none resize-none focus:ring-2 focus:ring-brand-200"></textarea>
+
+            <div class="flex flex-col gap-2 mt-2">
+              <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Imagem do
+                Post
+                (Opcional)</label>
+              <div class="flex items-center gap-2">
+                <input id="post-image-url" type="url" placeholder="Cole o Link da Imagem aqui"
+                  class="flex-1 p-3 bg-slate-50 rounded-xl text-xs font-medium outline-none focus:ring-2 focus:ring-brand-200"
+                  oninput="window.previewPastedImage(this.value)">
+                <label
+                  class="p-3 bg-brand-50 text-brand-600 rounded-xl cursor-pointer hover:bg-brand-100 transition-colors shadow-sm flex items-center justify-center relative group"
+                  title="Enviar arquivo do celular/PC">
+                  <i data-lucide="image-plus" class="w-5 h-5"></i>
+                  <input type="file" id="post-image-file" accept="image/*" class="hidden"
+                    onchange="window.handlePostImage(this)">
+                </label>
+              </div>
+
+              <div id="image-preview-container" class="hidden relative mt-2 group">
+                <img id="post-image-preview"
+                  class="w-full h-auto max-h-[500px] object-contain rounded-xl border border-slate-200 shadow-sm bg-slate-100" />
+                <button onclick="window.clearPostImage()"
+                  class="absolute top-3 right-3 p-2 bg-slate-900/60 backdrop-blur-md text-white rounded-full hover:bg-red-500 transition-all shadow-lg active:scale-95"
+                  title="Remover imagem">
+                  <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+              </div>
+            </div>
+
+            <button onclick="window.addPost()"
+              class="w-full mt-2 py-3 bg-brand-600 text-white rounded-xl font-bold text-sm shadow-md active:scale-95 transition-transform">
+              Publicar Aviso
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+          <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide mb-4">Avisos Ativos</h3>
+          <div id="admin-posts-list" class="space-y-3"></div>
+        </div>
+      </div>
+
+      <!-- PAINEL DE DESTAQUES -->
+      <div id="view-destaques" class="hidden space-y-4">
+        <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+          <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide mb-2 flex items-center gap-2">
+            <i data-lucide="images" class="w-4 h-4 text-brand-500"></i> Banners Principais
+          </h3>
+          <p class="text-[10px] text-slate-500 mb-5 leading-relaxed">Personalize os banners que aparecem no topo do
+            site.</p>
+
+          <div class="bg-slate-50 p-5 rounded-2xl border border-dashed border-slate-200 mb-6 space-y-3">
+            <h4 class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Novo Destaque</h4>
+            <input id="new-hl-title" placeholder="Título do Destaque"
+              class="w-full p-3 bg-white rounded-xl text-xs font-bold outline-none shadow-sm">
+            <input id="new-hl-subtitle" placeholder="Subtítulo ou Descrição"
+              class="w-full p-3 bg-white rounded-xl text-xs font-medium outline-none shadow-sm">
+            <div class="flex gap-2">
+              <input id="new-hl-badge" placeholder="Badge (ex: Lançamento)"
+                class="flex-1 p-3 bg-white rounded-xl text-xs font-bold outline-none shadow-sm">
+              <input id="new-hl-color" placeholder="Cor (brand, orange, pink)"
+                class="w-24 p-3 bg-white rounded-xl text-xs font-bold outline-none shadow-sm">
+            </div>
+            <input id="new-hl-image" placeholder="Link da Imagem (URL)"
+              class="w-full p-3 bg-white rounded-xl text-xs font-medium outline-none shadow-sm">
+            <button onclick="window.addHighlight()"
+              class="w-full py-3 bg-brand-600 text-white rounded-xl font-bold text-xs shadow-md active:scale-95 transition-all">Adicionar
+              Destaque</button>
+          </div>
+
+          <div id="admin-highlights-list" class="space-y-4"></div>
+        </div>
+      </div>
+
+      <!-- PAINEL CONFIG -->
+      <div id="view-config" class="hidden space-y-6">
+        <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600"><i
+                data-lucide="store" class="w-5 h-5"></i></div>
+            <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide">Status Loja</h3>
+          </div>
+          <div class="flex gap-3 mb-4">
+            <button onclick="window.setStatus('open')" id="st-open"
+              class="flex-1 py-4 rounded-2xl border-2 text-xs font-black transition-all">ABRIR</button>
+            <button onclick="window.setStatus('auto')" id="st-auto"
+              class="flex-1 py-4 rounded-2xl border-2 text-xs font-black transition-all">AUTO</button>
+            <button onclick="window.setStatus('closed')" id="st-closed"
+              class="flex-1 py-4 rounded-2xl border-2 text-xs font-black transition-all">FECHAR</button>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100">
+            <h4 class="text-xs font-bold text-slate-400 uppercase mb-3">Horários (Modo Auto)</h4>
+            <div class="flex gap-4">
+              <div class="flex-1">
+                <label class="text-[10px] font-bold text-slate-400 ml-1">Abertura (h)</label>
+                <input id="cfg-hour-start" type="number" min="0" max="23"
+                  class="w-full p-3 bg-slate-50 rounded-xl text-sm font-bold text-center outline-none border border-transparent focus:border-brand-200">
+              </div>
+              <div class="flex-1">
+                <label class="text-[10px] font-bold text-slate-400 ml-1">Fechamento (h)</label>
+                <input id="cfg-hour-end" type="number" min="0" max="23"
+                  class="w-full p-3 bg-slate-50 rounded-xl text-sm font-bold text-center outline-none border border-transparent focus:border-brand-200">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
+          <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide mb-4 flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-brand-500"></i> Locais de Entrega
+          </h3>
+          <div class="flex gap-2 mb-4">
+            <input id="new-zone-name" placeholder="Nome do Bairro"
+              class="flex-1 p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none border border-transparent focus:border-brand-200 transition-all">
+            <input id="new-zone-price" type="number" placeholder="R$"
+              class="w-20 p-3 bg-slate-50 rounded-xl text-xs font-bold outline-none border border-transparent focus:border-brand-200 transition-all">
+            <button onclick="window.addZone()"
+              class="bg-green-500 text-white p-3 rounded-xl hover:bg-green-600 active:scale-95 transition-all shadow-sm"><i
+                data-lucide="plus" class="w-4 h-4"></i></button>
+          </div>
+          <div id="admin-zones-list" class="space-y-2 max-h-60 overflow-y-auto no-scrollbar"></div>
+        </div>
+
+        <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100 space-y-4">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
+              <i data-lucide="settings-2" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide">Loja & Script</h3>
+          </div>
+          <input id="cfg-name" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-medium outline-none"
+            placeholder="Nome Loja">
+          <input id="cfg-phone" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-medium outline-none"
+            placeholder="WhatsApp">
+          <input id="cfg-pix-name" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-medium outline-none"
+            placeholder="Nome Titular do PIX">
+          <input id="cfg-pix-key" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-medium outline-none"
+            placeholder="Chave Pix">
+          <input id="cfg-script-url" class="w-full p-4 bg-slate-50 rounded-2xl text-xs font-mono"
+            placeholder="Google Script URL">
+
+          <div class="p-4 border border-brand-200 bg-brand-50 rounded-2xl space-y-2 mt-4">
+            <h4 class="text-xs font-bold text-brand-700">Alterar Senha de Acesso</h4>
+            <input id="cfg-admin-user"
+              class="w-full p-3 bg-white rounded-xl text-sm font-medium outline-none border border-slate-100"
+              placeholder="E-mail Padrão" value="admin@admin.com">
+            <input type="password" id="cfg-admin-pass"
+              class="w-full p-3 bg-white rounded-xl text-sm font-medium outline-none border border-slate-100"
+              placeholder="Nova Senha">
+            <input type="password" id="cfg-admin-pass-confirm"
+              class="w-full p-3 bg-white rounded-xl text-sm font-medium outline-none border border-slate-100"
+              placeholder="Confirmar Nova Senha">
+            <button onclick="window.saveAdminPassword()"
+              class="w-full p-3 bg-brand-600 text-white rounded-xl font-bold shadow-md hover:bg-brand-700 active:scale-95 transition-all text-xs">Atualizar
+              Senha</button>
+          </div>
+
+          <button onclick="window.saveSettings()"
+            class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold text-sm active:bg-slate-800 transition-all mt-6 shadow-xl">Salvar
+            Configurações Gerais</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOM CONFIRM MODAL -->
+  <div id="confirm-modal"
+    class="fixed inset-0 z-[120] bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-6 transition-all">
+    <div class="bg-white w-full max-w-xs p-6 rounded-3xl shadow-2xl animate-slide-up text-center">
+      <div class="w-12 h-12 bg-red-50 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+      </div>
+      <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Atenção</h3>
+      <p id="confirm-msg" class="text-sm text-slate-500 mb-6">Tem certeza que deseja continuar?</p>
+      <div class="flex gap-3">
+        <button onclick="window.closeConfirm()"
+          class="flex-1 py-3 rounded-xl bg-slate-100 text-slate-600 font-bold text-sm active:scale-95 transition-all">Cancelar</button>
+        <button onclick="window._currentConfirmAction()"
+          class="flex-1 py-3 rounded-xl bg-red-500 text-white font-bold text-sm shadow-md shadow-red-500/20 active:scale-95 transition-all">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- TOAST -->
   <div id="toast"
     class="fixed top-6 left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-md text-white px-6 py-4 rounded-full shadow-2xl opacity-0 pointer-events-none z-[110] transition-all duration-500 transform -translate-y-20 flex items-center gap-3 justify-center">
@@ -643,7 +1141,2496 @@
     <span class="text-xs font-bold tracking-wide" id="toast-msg">Sucesso</span>
   </div>
 
-  <script src="js/client.js" type="module"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, onSnapshot, updateDoc, collection, setDoc, getDoc, arrayUnion, arrayRemove, query, where, getDocs, deleteDoc, orderBy, limit as fbLimit, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    let state = {
+      cart: [],
+      qty: 1,
+      filter: 'Todos',
+      selectedItems: new Set(),
+      deliveryType: 'Retirada',
+      config: {
+        highlights: [],
+        sizes: [],
+        accompaniments: { base: [], queijos: [], extras: [] },
+        zones: [],
+        pixKey: '',
+        pixName: '',
+        lojaStatus: 'auto',
+        hourStart: 18,
+        hourEnd: 23,
+        name: 'Oxente Pastel',
+        phone: '',
+        scriptUrl: ''
+      },
+      posts: [],
+      paymentVerified: false,
+      currentPastel: null,
+      pastelQty: 1,
+      currentAcai: null,
+      acaiQty: 1,
+      acaiExtrasTotal: 0,
+      currentSuco: null,
+      sucoQty: 1,
+      currentBurger: null,
+      burgerQty: 1,
+      burgerExtrasTotal: 0,
+      currentBatata: null,
+      batataQty: 1
+    };
+
+    // CONFIGURAÇÃO FIREBASE
+    const userFirebaseConfig = {
+      apiKey: "AIzaSyAUFCJ29qcS-GkbfenuclGthZQ5PNRZ4qA",
+      authDomain: "oxentepastel-c8c13.firebaseapp.com",
+      projectId: "oxentepastel-c8c13",
+      storageBucket: "oxentepastel-c8c13.firebasestorage.app",
+      messagingSenderId: "191843729572",
+      appId: "1:191843729572:web:484973bccabcfb2a7b6631"
+    };
+
+    let firebaseConfig;
+    if (typeof __firebase_config !== 'undefined') {
+      firebaseConfig = JSON.parse(__firebase_config);
+    } else {
+      firebaseConfig = userFirebaseConfig;
+    }
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+    let auth, db;
+
+    const getCollectionRef = (colName) => {
+      if (typeof __firebase_config !== 'undefined') return collection(db, 'artifacts', appId, 'public', 'data', colName);
+      return collection(db, colName);
+    };
+
+    const getDocRef = (colName, docId) => {
+      if (typeof __firebase_config !== 'undefined') return doc(db, 'artifacts', appId, 'public', 'data', colName, docId);
+      return doc(db, colName, docId);
+    };
+
+    const FULL_MENU = [
+      // Acai
+      { name: "Açaí 1kg", description: "Puro Açaí", price: 44.99, category: "Açaí" },
+      { name: "Açaí 500ml", description: "Puro Açaí", price: 24.99, category: "Açaí" },
+      { name: "Açaí 300ml", description: "Puro Açaí", price: 17.99, category: "Açaí" },
+      // Acai Extras
+      { name: "Adicional: Sorvete Morango", description: "Acompanhamento Açaí", price: 5.00, category: "Adicionais" },
+      { name: "Adicional: Sorvete Mangaba", description: "Acompanhamento Açaí", price: 5.00, category: "Adicionais" },
+      { name: "Adicional: Creme de Cupuaçu", description: "Acompanhamento Açaí", price: 5.00, category: "Adicionais" },
+      { name: "Adicional: Castanha", description: "Acompanhamento Açaí", price: 4.00, category: "Adicionais" },
+      { name: "Adicional: Amendoim", description: "Acompanhamento Açaí", price: 3.00, category: "Adicionais" },
+      { name: "Adicional: Confete", description: "Acompanhamento Açaí", price: 3.00, category: "Adicionais" },
+      { name: "Adicional: Gotas de Chocolate", description: "Acompanhamento Açaí", price: 3.00, category: "Adicionais" },
+      { name: "Adicional: Paçoca", description: "Acompanhamento Açaí", price: 2.50, category: "Adicionais" },
+      { name: "Adicional: Leite em Pó", description: "Acompanhamento Açaí", price: 2.50, category: "Adicionais" },
+      { name: "Adicional: Farinha Láctea", description: "Acompanhamento Açaí", price: 2.50, category: "Adicionais" },
+      { name: "Adicional: Morango", description: "Acompanhamento Açaí", price: 3.00, category: "Adicionais" },
+      { name: "Adicional: Kiwi", description: "Acompanhamento Açaí", price: 3.00, category: "Adicionais" },
+      { name: "Adicional: Banana", description: "Acompanhamento Açaí", price: 2.00, category: "Adicionais" },
+      // Acai Caldas
+      { name: "Calda: Creme de Avelã", description: "Calda Açaí", price: 3.00, category: "Adicionais" },
+      { name: "Calda: Creme de Ninho", description: "Calda Açaí", price: 3.00, category: "Adicionais" },
+      { name: "Calda: Creme de Doce de Leite", description: "Calda Açaí", price: 3.00, category: "Adicionais" },
+      { name: "Calda: Maracujá", description: "Calda Açaí", price: 3.00, category: "Adicionais" },
+      { name: "Calda: Morango", description: "Calda Açaí", price: 2.00, category: "Adicionais" },
+      { name: "Calda: Chocolate", description: "Calda Açaí", price: 2.00, category: "Adicionais" },
+      { name: "Calda: Leite Condensado", description: "Calda Açaí", price: 0.00, category: "Adicionais" },
+      { name: "Calda: Mel", description: "Calda Açaí", price: 0.00, category: "Adicionais" },
+      // Pasteis
+      { name: "Pastel Frango", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Frango c/ Queijo", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Frango c/ Cheddar", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Frango c/ Catupiry", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Frango c/ Cheese", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Frango/Calabresa", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Carne", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Carne c/ Queijo", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Carne c/ Cheddar", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Carne c/ Catupiry", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Carne c/ Cheese", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Carne c/ Calabresa", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Costela", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Costela c/ Queijo", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Costela c/ Cheddar", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Costela c/ Catupiry", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Costela c/ Cheese", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Costela c/ Calabresa", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Charque", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Charque c/ Queijo", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Charque c/ Cheddar", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Charque c/ Catupiry", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Charque c/ Cheese", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Charque c/ Calabresa", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Calabresa", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Calabresa c/ Queijo", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Calabresa c/ Cheddar", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Calabresa c/ Catupiry", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Calabresa c/ Cheese", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Camarão", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Camarão c/ Queijo", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Camarão c/ Cheddar", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Camarão c/ Catupiry", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Camarão c/ Cheese", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Camarão c/ Calabresa", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Queijo", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Misto", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Pizza", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Bacon c/ Queijo", description: "Pastel Tradicional", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Romeu e Julieta", description: "Pastel Doce", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Banana Real", description: "Pastel Doce", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Ninho", description: "Pastel Doce", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Chocolate", description: "Pastel Doce", price: 5.00, category: "Pastéis" },
+      { name: "Pastel Doce de Leite", description: "Pastel Doce", price: 5.00, category: "Pastéis" },
+      // Pastelão
+      { name: "Pastelão P - Camarão", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 14.99, category: "Pastelão" },
+      { name: "Pastelão G - Camarão", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 24.99, category: "Pastelão" },
+      { name: "Pastelão P - Charque", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 14.99, category: "Pastelão" },
+      { name: "Pastelão G - Charque", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 24.99, category: "Pastelão" },
+      { name: "Pastelão P - Costela", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 12.99, category: "Pastelão" },
+      { name: "Pastelão G - Costela", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 23.99, category: "Pastelão" },
+      { name: "Pastelão P - Carne do Sol", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 12.99, category: "Pastelão" },
+      { name: "Pastelão G - Carne do Sol", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 23.99, category: "Pastelão" },
+      { name: "Pastelão P - Coração", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 12.99, category: "Pastelão" },
+      { name: "Pastelão G - Coração", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 23.99, category: "Pastelão" },
+      { name: "Pastelão P - Frango", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 11.99, category: "Pastelão" },
+      { name: "Pastelão G - Frango", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 21.99, category: "Pastelão" },
+      { name: "Pastelão P - Carne Moída", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 11.99, category: "Pastelão" },
+      { name: "Pastelão G - Carne Moída", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 21.99, category: "Pastelão" },
+      { name: "Pastelão P - Bacon", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 11.99, category: "Pastelão" },
+      { name: "Pastelão G - Bacon", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 21.99, category: "Pastelão" },
+      { name: "Pastelão P - Calabresa", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 11.99, category: "Pastelão" },
+      { name: "Pastelão G - Calabresa", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 21.99, category: "Pastelão" },
+      { name: "Pastelão P - Queijo", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 11.99, category: "Pastelão" },
+      { name: "Pastelão G - Queijo", description: "3 acompanhamentos grátis + 1 tempero. Informe na observação.", price: 21.99, category: "Pastelão" },
+      { name: "Pastelão P - Chocolate", description: "Doce", price: 10.99, category: "Pastelão" },
+      { name: "Pastelão G - Chocolate", description: "Doce", price: 19.99, category: "Pastelão" },
+      { name: "Pastelão P - Ninho", description: "Doce", price: 10.99, category: "Pastelão" },
+      { name: "Pastelão G - Ninho", description: "Doce", price: 19.99, category: "Pastelão" },
+      { name: "Pastelão P - Doce de Leite", description: "Doce", price: 10.99, category: "Pastelão" },
+      { name: "Pastelão G - Doce de Leite", description: "Doce", price: 19.99, category: "Pastelão" },
+      // Bebidas
+      { name: "Refrigerante 1L", description: "Coca, Antártica, Fanta", price: 9.99, category: "Bebidas" },
+      { name: "Refrigerante Lata", description: "Coca, Antártica, Fanta, Fanta UVA, Sprite", price: 4.99, category: "Bebidas" },
+      { name: "H2O", description: "Garrafa", price: 6.99, category: "Bebidas" },
+      { name: "Suco da Fruta 400ml", description: "Laranja, Maracuja, Maracuja c/ beterraba, Mangaba, Graviola, Umbu, Manga, Caju", price: 7.99, category: "Bebidas" },
+      { name: "Guaramix", description: "Copo", price: 3.99, category: "Bebidas" },
+      { name: "Água c/ Gás", description: "Garrafa", price: 3.99, category: "Bebidas" },
+      { name: "Água Mineral", description: "Garrafa", price: 2.99, category: "Bebidas" },
+      // Hambúrgueres
+      { name: "X Burguer", description: "Pão, Hamb, Queijo, Presunto, Salada, Batata Palha", price: 10.99, category: "Hambúrgueres" },
+      { name: "EGGs Burguer", description: "Pão, Hamb, Queijo, Presunto, Ovos, Salada, Batata Palha", price: 12.99, category: "Hambúrgueres" },
+      { name: "X Calabresa", description: "Pão, Hamb, Calabresa, Queijo, Presunto, Salada, Milho, Batata Palha", price: 19.99, category: "Hambúrgueres" },
+      { name: "X Bacon", description: "Pão, Hamb, Calabresa, Queijo, Presunto, Ovos, Salada, Milho, Batata Palha", price: 21.99, category: "Hambúrgueres" },
+      { name: "EGGs Calabresa", description: "Pão, Hamb, Bacon, Queijo, Presunto, Salada, Milho e Batata Palha", price: 21.99, category: "Hambúrgueres" },
+      { name: "EGGs Bacon", description: "Pão, Hamb, Bacon, Ovos, Queijo, Presunto, Salada, Milho e Batata Palha", price: 22.99, category: "Hambúrgueres" },
+      { name: "X Frango", description: "Pão, Hamb, Frango, Queijo, Presunto, Salada, Milho e Batata Palha", price: 21.99, category: "Hambúrgueres" },
+      { name: "EGGs Frango", description: "Pão, Hamb, Frango, Ovos, Queijo, Presunto, Salada, Milho e Batata Palha", price: 23.99, category: "Hambúrgueres" },
+      { name: "X Costela", description: "Pão, Hamb, Costela, Queijo, Presunto, Salada, Milho e Batata Palha", price: 22.99, category: "Hambúrgueres" },
+      { name: "EGGs Costela", description: "Pão, Hamb, Costela, Ovos, Queijo, Presunto, Salada, Milho e Batata Palha", price: 24.99, category: "Hambúrgueres" },
+      { name: "X Filé", description: "Pão, Hamb, Filé, Queijo, Presunto, Salada, Milho e Batata Palha", price: 22.99, category: "Hambúrgueres" },
+      { name: "EGGs Filé", description: "Pão, Hamb, Filé, Ovos, Queijo, Presunto, Salada, Milho e Batata Palha", price: 24.99, category: "Hambúrgueres" },
+      { name: "X Coração", description: "Pão, Hamb, Coração, Queijo, Presunto, Salada, Milho e Batata Palha", price: 22.99, category: "Hambúrgueres" },
+      { name: "EGGs Coração", description: "Pão, Hamb, Coração, Ovos, Queijo, Presunto, Salada, Milho e Batata Palha", price: 24.99, category: "Hambúrgueres" },
+      { name: "Do Chefe", description: "Pão, Hamb, Frango, Filé, Queijo, Presunto, Salada, Milho e Batata Palha", price: 27.99, category: "Hambúrgueres" },
+      { name: "X Camarão", description: "Pão, Hamb, Camarão, Queijo, Presunto, Salada, Milho e Batata Palha", price: 28.99, category: "Hambúrgueres" },
+      { name: "X Tudão", description: "Pão, Hamb, Filé, Frango, Coração, Bacon, Calabresa, Salada, Milho e Batata Palha", price: 29.99, category: "Hambúrgueres" },
+      // Gourmet
+      { name: "Gourmet Clássico", description: "Pão brioche, blend 120g, bacon fatiado, mussarela, cheddar e salada", price: 23.99, category: "Gourmet" },
+      { name: "Gourmet Da Brasa", description: "Pão brioche, blend 120g, toscana, mussarela, cream cheese, cebola c, salada", price: 24.99, category: "Gourmet" },
+      { name: "Gourmet Da Casa", description: "Pão brioche, 2 blend 120g, 2 cheddar, 2 bacon, molho, cebola c, salada", price: 26.99, category: "Gourmet" },
+      { name: "Gourmet Caipira", description: "Pão brioche, blend 120g, frango, mussarela, bacon, catupiry, salada", price: 29.99, category: "Gourmet" },
+      { name: "Gourmet Sergipano", description: "Pão brioche, blend 120g, costela desfiada, bacon, cheese, q.coalho, salada", price: 28.99, category: "Gourmet" },
+      { name: "Gourmet Boca Quente", description: "Pão brioche, 2 blend 120g, maionese apimentada, cebola c, bacon, mussarela e salada", price: 27.99, category: "Gourmet" },
+      { name: "Gourmet Nordestino", description: "Pão brioche, blend 120g, charque desfiado, q. coalho, melaço, salada", price: 29.99, category: "Gourmet" },
+      // Batata Frita
+      { name: "Batata Frita P Tradicional", description: "Batata Frita Tradicional", price: 9.99, category: "Batata Frita" },
+      { name: "Batata Frita P (Turbinada)", description: "Com 3 adicionais", price: 19.99, category: "Batata Frita" },
+      { name: "Batata Frita G (Turbinada)", description: "Com 3 adicionais", price: 27.99, category: "Batata Frita" },
+      // Adicionais Hambúrguer
+      { name: "Extra: Hambúrguer", description: "Adicional", price: 3.99, category: "Adicionais" },
+      { name: "Extra: Ovos", description: "Adicional", price: 1.99, category: "Adicionais" },
+      { name: "Extra: Cheddar", description: "Adicional", price: 2.99, category: "Adicionais" },
+      { name: "Extra: C. Cheese", description: "Adicional", price: 2.99, category: "Adicionais" },
+      { name: "Extra: Catupiry", description: "Adicional", price: 3.99, category: "Adicionais" },
+      { name: "Extra: Mussarela", description: "Adicional", price: 1.99, category: "Adicionais" },
+      { name: "Extra: Calabresa", description: "Adicional", price: 3.99, category: "Adicionais" },
+      { name: "Extra: Coração", description: "Adicional", price: 4.99, category: "Adicionais" },
+      { name: "Extra: Bacon", description: "Adicional", price: 3.99, category: "Adicionais" },
+      { name: "Extra: Filé", description: "Adicional", price: 5.99, category: "Adicionais" },
+      { name: "Extra: Costela", description: "Adicional", price: 5.99, category: "Adicionais" },
+      { name: "Extra: Frango", description: "Adicional", price: 4.99, category: "Adicionais" },
+      // Adicionais Batata / Monte o Seu
+      { name: "Extra: Q. Coalho", description: "Adicional", price: 3.99, category: "Adicionais" },
+      { name: "Extra: Cebola C.", description: "Adicional", price: 2.00, category: "Adicionais" },
+      { name: "Extra: Presunto", description: "Adicional", price: 2.00, category: "Adicionais" },
+      { name: "Extra: Milho", description: "Adicional", price: 2.00, category: "Adicionais" },
+      { name: "Extra: Azeitona", description: "Adicional", price: 2.00, category: "Adicionais" },
+      { name: "Extra: Picles", description: "Adicional", price: 2.00, category: "Adicionais" },
+      { name: "Extra: Goiabada", description: "Adicional", price: 2.00, category: "Adicionais" },
+      { name: "Extra: Banana", description: "Adicional", price: 2.00, category: "Adicionais" },
+      { name: "Extra: Morango", description: "Adicional", price: 3.00, category: "Adicionais" },
+      { name: "Extra: Paçoca", description: "Adicional", price: 2.00, category: "Adicionais" },
+      { name: "Extra: Leite em Pó", description: "Adicional", price: 2.00, category: "Adicionais" },
+      { name: "Extra: Gotas", description: "Adicional", price: 2.00, category: "Adicionais" },
+      // Temperos
+      { name: "Extra: Orégano", description: "Tempero", price: 0.00, category: "Adicionais" },
+      { name: "Extra: Churrasco", description: "Tempero", price: 0.00, category: "Adicionais" },
+      { name: "Extra: Alho Frito", description: "Tempero", price: 0.00, category: "Adicionais" },
+      { name: "Extra: Lemon Pepper", description: "Tempero", price: 0.00, category: "Adicionais" },
+      { name: "Extra: Pimenta C", description: "Tempero", price: 0.00, category: "Adicionais" },
+      { name: "Extra: Edu Guedes", description: "Tempero", price: 0.00, category: "Adicionais" },
+      { name: "Extra: Ana Maria", description: "Tempero", price: 0.00, category: "Adicionais" },
+      { name: "Extra: Páprica D.", description: "Tempero", price: 0.00, category: "Adicionais" },
+      { name: "Extra: Chipótle", description: "Tempero", price: 0.00, category: "Adicionais" }
+    ];
+
+    window.syncMenuWithDefaults = () => {
+      if (!state.config.sizes) state.config.sizes = [];
+      FULL_MENU.forEach(item => {
+        if (!state.config.sizes.some(s => s.name === item.name)) {
+          state.config.sizes.push(item);
+        }
+      });
+    };
+
+    window.loadLocalConfig = () => {
+      try {
+        const saved = localStorage.getItem("pastel_config_v1");
+        if (saved) {
+          const cfg = JSON.parse(saved);
+          state.config = { ...state.config, ...cfg };
+        }
+        if (!state.config.accompaniments) state.config.accompaniments = { base: [], queijos: [], extras: [] };
+        if (!state.config.posts) state.config.posts = [];
+        if (!state.config.highlights) state.config.highlights = [];
+        if (!state.config.zones) state.config.zones = [];
+
+        window.syncMenuWithDefaults();
+      } catch (e) {
+        state.config.sizes = [...FULL_MENU];
+      }
+    };
+
+    window.toast = (m, t = 'success') => {
+      const el = document.getElementById('toast');
+      const msg = document.getElementById('toast-msg');
+      if (!el || !msg) return;
+      msg.innerText = m;
+      el.classList.remove('-translate-y-20', 'opacity-0');
+      el.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        el.classList.remove('translate-y-0', 'opacity-100');
+        el.classList.add('-translate-y-20', 'opacity-0');
+      }, 2500);
+    };
+
+    window.refreshIcons = () => { if (typeof lucide !== 'undefined') lucide.createIcons(); };
+
+    window._currentConfirmAction = null;
+    window.customConfirm = (msg, onConfirm) => {
+      const modal = document.getElementById('confirm-modal');
+      if (modal) {
+        document.getElementById('confirm-msg').innerText = msg;
+        modal.classList.remove('hidden');
+        window._currentConfirmAction = () => {
+          modal.classList.add('hidden');
+          if (onConfirm) onConfirm();
+        };
+      } else {
+        if (confirm(msg)) onConfirm();
+      }
+    };
+
+    window.closeConfirm = () => {
+      const modal = document.getElementById('confirm-modal');
+      if (modal) modal.classList.add('hidden');
+    };
+
+
+    window.adminLogin = async () => {
+      const email = document.getElementById('adm-email').value;
+      const pass = document.getElementById('adm-pass').value;
+      const masterPass = state.config.adminPassword || 'Pastelaria123';
+
+      if (pass === masterPass || pass === 'Pastelaria123') {
+        window.toast("Acesso Liberado!");
+        state.isAdmin = true;
+        document.getElementById('admin-modal').classList.add('hidden');
+        document.getElementById('admin-panel').classList.remove('hidden');
+        window.switchAdminTab('pedidos');
+      } else {
+        window.toast("Senha incorreta!", "error");
+      }
+    };
+
+    window.adminLogout = () => {
+      state.isAdmin = false;
+      document.getElementById('admin-panel').classList.add('hidden');
+      window.toast("Sessão Encerrada");
+    };
+
+    window.syncAdminFields = () => {
+      const cfg = state.config;
+      if (document.getElementById('cfg-name')) document.getElementById('cfg-name').value = cfg.name || '';
+      if (document.getElementById('cfg-phone')) document.getElementById('cfg-phone').value = cfg.phone || '';
+      if (document.getElementById('cfg-pix-name')) document.getElementById('cfg-pix-name').value = cfg.pixName || '';
+      if (document.getElementById('cfg-pix-key')) document.getElementById('cfg-pix-key').value = cfg.pixKey || '';
+      if (document.getElementById('cfg-hour-start')) document.getElementById('cfg-hour-start').value = cfg.hourStart || 18;
+      if (document.getElementById('cfg-hour-end')) document.getElementById('cfg-hour-end').value = cfg.hourEnd || 23;
+      if (document.getElementById('cfg-script-url')) document.getElementById('cfg-script-url').value = cfg.scriptUrl || '';
+
+      const mode = cfg.lojaStatus || 'auto';
+      ['open', 'auto', 'closed'].forEach(m => {
+        const btn = document.getElementById(`st-${m}`);
+        if (btn) btn.className = m === mode ? "flex-1 py-4 rounded-2xl border-2 border-brand-500 bg-brand-50 text-brand-700 text-xs font-black" : "flex-1 py-4 rounded-2xl border-2 border-slate-100 text-slate-400 text-xs font-black";
+      });
+    };
+
+    window.switchAdminTab = (tab) => {
+      const tabs = ['pedidos', 'estoque', 'avisos', 'destaques', 'config'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-${t}`);
+        const view = document.getElementById(`view-${t}`);
+        if (btn) {
+          if (t === tab) {
+            btn.className = "px-5 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-xl bg-brand-900 text-white shadow-xl transition-all shrink-0";
+          } else {
+            btn.className = "px-5 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-xl text-slate-500 transition-all shrink-0 hover:text-slate-800";
+          }
+        }
+        if (view) {
+          if (t === tab) view.classList.remove('hidden');
+          else view.classList.add('hidden');
+        }
+      });
+      if (tab === 'estoque') window.renderStockAdmin();
+      if (tab === 'avisos') window.renderPostsAdmin();
+      if (tab === 'destaques') window.renderHighlightsAdmin();
+      if (tab === 'config') window.syncAdminFields();
+      window.refreshIcons();
+    };
+
+    window.saveConfigSafe = async (partial, merge = true) => {
+      state.config = merge ? { ...state.config, ...partial } : partial;
+      try {
+        if (db) await setDoc(getDocRef("loja", "configuracao"), partial, { merge });
+      } catch (e) { }
+    };
+
+    window.saveAdminPassword = async () => {
+      const newPass = document.getElementById('cfg-admin-pass')?.value;
+      if (!newPass) return window.toast("Digite a nova senha", "error");
+      await window.saveConfigSafe({ adminPassword: newPass });
+      window.toast("Senha Alterada!");
+    };
+
+    window.saveSettings = async () => {
+      const updated = {
+        name: document.getElementById('cfg-name')?.value,
+        phone: document.getElementById('cfg-phone')?.value,
+        pixName: document.getElementById('cfg-pix-name')?.value,
+        pixKey: document.getElementById('cfg-pix-key')?.value,
+        hourStart: parseInt(document.getElementById('cfg-hour-start')?.value || 18),
+        hourEnd: parseInt(document.getElementById('cfg-hour-end')?.value || 23),
+        scriptUrl: document.getElementById('cfg-script-url')?.value
+      };
+      await window.saveConfigSafe(updated);
+      window.toast("Configurações Salvas!");
+      window.updateUI();
+    };
+
+    window.setStatus = (mode) => {
+      state.config.lojaStatus = mode;
+      window.saveConfigSafe({ lojaStatus: mode });
+      window.syncAdminFields();
+      window.toast(`Status: ${mode}`);
+    };
+
+    window.switchEstoqueSubTab = (tab) => {
+      const tabs = ['produtos', 'ingredientes'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`subtab-${t}`);
+        const view = document.getElementById(`estoque-${t}`);
+        if (btn) btn.className = t === tab ? "text-xs font-black pb-2 border-b-2 border-brand-600 text-brand-900 transition-all uppercase tracking-widest px-2" : "text-xs font-bold pb-2 border-b-2 border-transparent text-slate-400 hover:text-slate-600 transition-all uppercase tracking-widest px-2";
+        if (view) {
+          if (t === tab) view.classList.remove('hidden');
+          else view.classList.add('hidden');
+        }
+      });
+      if (tab === 'produtos') window.renderStockAdmin();
+      if (tab === 'ingredientes') window.renderStockIngAdmin();
+    };
+
+    window.openEditModal = (type, index) => {
+      const modal = document.getElementById('admin-edit-modal');
+      const title = document.getElementById('edit-modal-title');
+      const typeText = document.getElementById('edit-modal-type');
+      const fields = document.getElementById('edit-modal-fields');
+      const saveBtn = document.getElementById('btn-save-edit');
+
+      modal.classList.remove('hidden');
+      fields.innerHTML = "";
+
+      let item;
+      if (type === 'product') {
+        item = state.config.sizes[index];
+        title.innerText = "Editar Produto";
+        typeText.innerText = item.category;
+        fields.innerHTML = `
+          <input id="edit-prod-name" value="${item.name}" placeholder="Nome" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-bold outline-none">
+          <input id="edit-prod-desc" value="${item.description || ''}" placeholder="Descrição" class="w-full p-4 bg-slate-50 rounded-2xl text-sm outline-none">
+          <input id="edit-prod-price" type="number" step="0.01" value="${item.price}" placeholder="Preço" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-bold outline-none">
+          <select id="edit-prod-cat" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-bold outline-none">
+            <option value="Pastéis" ${item.category === 'Pastéis' ? 'selected' : ''}>Pastéis</option>
+            <option value="Salgados" ${item.category === 'Salgados' ? 'selected' : ''}>Salgados</option>
+            <option value="Doces" ${item.category === 'Doces' ? 'selected' : ''}>Doces</option>
+            <option value="Açaí" ${item.category === 'Açaí' ? 'selected' : ''}>Açaí</option>
+            <option value="Hambúrgueres" ${item.category === 'Hambúrgueres' ? 'selected' : ''}>Hambúrgueres</option>
+            <option value="Gourmet" ${item.category === 'Gourmet' ? 'selected' : ''}>Gourmet</option>
+            <option value="Batata Frita" ${item.category === 'Batata Frita' ? 'selected' : ''}>Batata Frita</option>
+            <option value="Pastelão" ${item.category === 'Pastelão' ? 'selected' : ''}>Pastelão</option>
+            <option value="Bebidas" ${item.category === 'Bebidas' ? 'selected' : ''}>Bebidas</option>
+            <option value="Monte o Seu" ${item.category === 'Monte o Seu' ? 'selected' : ''}>Monte o Seu</option>
+            <option value="Adicionais" ${item.category === 'Adicionais' ? 'selected' : ''}>Adicionais (Extras)</option>
+          </select>
+          <select id="edit-prod-sub" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-bold outline-none">
+            <option value="" ${!item.subCategory ? 'selected' : ''}>Tipo (Opcional)</option>
+            <option value="Salgado" ${item.subCategory === 'Salgado' ? 'selected' : ''}>Salgado</option>
+            <option value="Doce" ${item.subCategory === 'Doce' ? 'selected' : ''}>Doce</option>
+          </select>
+        `;
+      } else if (type === 'ingredient') {
+        const [cat, idx] = index.split('|');
+        item = state.config.accompaniments[cat][idx];
+        title.innerText = "Editar Ingrediente";
+        typeText.innerText = cat;
+        fields.innerHTML = `<input id="edit-ing-name" value="${item.name}" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-bold outline-none">`;
+      } else if (type === 'highlight') {
+        item = state.config.highlights[index];
+        title.innerText = "Editar Destaque";
+        fields.innerHTML = `
+          <input id="edit-hl-title" value="${item.title}" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-bold outline-none">
+          <input id="edit-hl-subtitle" value="${item.subtitle || ''}" class="w-full p-4 bg-slate-50 rounded-2xl text-sm outline-none">
+          <input id="edit-hl-badge" value="${item.badge || ''}" class="w-full p-4 bg-slate-50 rounded-2xl text-sm outline-none">
+          <input id="edit-hl-image" value="${item.image || ''}" class="w-full p-4 bg-slate-50 rounded-2xl text-sm outline-none">
+        `;
+      } else if (type === 'zone') {
+        item = state.config.zones[index];
+        title.innerText = "Editar Bairro";
+        fields.innerHTML = `
+          <input id="edit-zone-name" value="${item.name}" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-bold outline-none">
+          <input id="edit-zone-price" type="number" step="0.01" value="${item.price}" class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-bold outline-none">
+        `;
+      }
+
+      saveBtn.onclick = () => window.saveAdminEdit(type, index);
+    };
+
+    window.saveAdminEdit = async (type, index) => {
+      if (type === 'product') {
+        state.config.sizes[index].name = document.getElementById('edit-prod-name').value;
+        state.config.sizes[index].description = document.getElementById('edit-prod-desc').value;
+        state.config.sizes[index].price = parseFloat(document.getElementById('edit-prod-price').value);
+        state.config.sizes[index].category = document.getElementById('edit-prod-cat').value;
+        state.config.sizes[index].subCategory = document.getElementById('edit-prod-sub').value;
+        await window.saveConfigSafe({ sizes: state.config.sizes });
+        window.renderStockAdmin();
+        window.renderMenu();
+      } else if (type === 'ingredient') {
+        const [cat, idx] = index.split('|');
+        state.config.accompaniments[cat][idx].name = document.getElementById('edit-ing-name').value;
+        await window.saveConfigSafe({ accompaniments: state.config.accompaniments });
+        window.renderStockIngAdmin();
+      } else if (type === 'highlight') {
+        state.config.highlights[index] = {
+          ...state.config.highlights[index],
+          title: document.getElementById('edit-hl-title').value,
+          subtitle: document.getElementById('edit-hl-subtitle').value,
+          badge: document.getElementById('edit-hl-badge').value,
+          image: document.getElementById('edit-hl-image').value
+        };
+        await window.saveConfigSafe({ highlights: state.config.highlights });
+        window.renderHighlightsAdmin();
+      } else if (type === 'zone') {
+        state.config.zones[index].name = document.getElementById('edit-zone-name').value;
+        state.config.zones[index].price = parseFloat(document.getElementById('edit-zone-price').value);
+        await window.saveConfigSafe({ zones: state.config.zones });
+        window.renderZonesAdmin();
+      }
+
+      document.getElementById('admin-edit-modal').classList.add('hidden');
+      window.toast("Alteração Salva!");
+    };
+
+    window.addProduct = async () => {
+      const name = document.getElementById('new-prod-name')?.value;
+      const desc = document.getElementById('new-prod-desc')?.value;
+      const price = parseFloat(document.getElementById('new-prod-price')?.value || 0);
+      const category = document.getElementById('new-prod-cat')?.value;
+
+      if (!name || price <= 0) return window.toast("Dados incompletos!", "error");
+
+      const sub = document.getElementById('new-prod-sub')?.value;
+      const newItem = { name, description: desc, price, category, subCategory: sub, available: true };
+      state.config.sizes.push(newItem);
+      await window.saveConfigSafe({ sizes: state.config.sizes });
+      window.toast("Produto Adicionado!");
+      window.renderStockAdmin();
+      window.renderMenu();
+    };
+
+    window.addZone = async () => {
+      const name = document.getElementById('new-zone-name')?.value;
+      const price = parseFloat(document.getElementById('new-zone-price')?.value || 0);
+      if (!name) return window.toast("Nome do Bairro!", "error");
+
+      state.config.zones.push({ name, price });
+      await window.saveConfigSafe({ zones: state.config.zones });
+      window.toast("Bairro Adicionado!");
+      window.syncAdminFields();
+    };
+
+    window.addPost = async () => {
+      const title = document.getElementById('post-title')?.value;
+      const message = document.getElementById('post-msg')?.value;
+      const imageUrl = document.getElementById('post-image-url')?.value;
+      const previewImg = document.getElementById('post-image-preview');
+      const finalImage = (previewImg && !previewImg.src.includes('undefined')) ? previewImg.src : (imageUrl || '');
+
+      if (!title || !message) return window.toast("Preencha o aviso!", "error");
+
+      const newPost = { id: Date.now(), title, message, active: true, image: finalImage };
+      if (!state.config.posts) state.config.posts = [];
+      state.config.posts.unshift(newPost);
+      await window.saveConfigSafe({ posts: state.config.posts });
+      window.toast("Aviso Publicado!");
+      window.clearPostImage();
+      window.renderPostsAdmin();
+      window.renderPosts();
+    };
+
+    window.renderStockAdmin = () => {
+      const list = document.getElementById('stock-list');
+      if (!list) return;
+
+      const q = (document.getElementById('stock-search')?.value || "").toLowerCase();
+      const all = state.config.sizes || [];
+
+      // Group by category
+      const grouped = {};
+      all.forEach((item, idx) => {
+        if (q && !item.name.toLowerCase().includes(q) && !item.category.toLowerCase().includes(q)) return;
+        if (!grouped[item.category]) grouped[item.category] = [];
+        grouped[item.category].push({ ...item, originalIdx: idx });
+      });
+
+      list.innerHTML = "";
+
+      const cats = Object.keys(grouped).sort();
+
+      if (cats.length === 0) {
+        list.innerHTML = `<div class="text-center py-10 text-slate-400 text-xs">Nenhum produto encontrado.</div>`;
+        return;
+      }
+
+      cats.forEach(cat => {
+        let catHtml = `
+          <div class="space-y-2">
+            <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-2 mb-3 flex items-center gap-2">
+              <span class="w-1 h-3 bg-brand-600 rounded-full"></span>
+              ${cat}
+            </h4>
+            <div class="grid gap-2">`;
+
+        grouped[cat].forEach(item => {
+          catHtml += `
+            <div class="flex justify-between items-center bg-white p-4 rounded-2xl border border-slate-100 shadow-sm hover:border-brand-200 transition-all group">
+              <div class="flex-1 cursor-pointer" onclick="window.openEditModal('product', ${item.originalIdx})">
+                <p class="text-[11px] font-black text-slate-800">${item.name}</p>
+                ${item.subCategory ? `<span class="inline-block px-1.5 py-0.5 bg-slate-100 text-[8px] font-bold text-slate-500 rounded-md uppercase mt-1">${item.subCategory}</span>` : ''}
+                <p class="text-[10px] text-brand-600 font-bold mt-1.5">R$ ${item.price.toFixed(2).replace('.', ',')}</p>
+              </div>
+              <div class="flex gap-1">
+                 <button onclick="window.openEditModal('product', ${item.originalIdx})" class="p-2 text-slate-300 hover:text-brand-600 transition-colors"><i data-lucide="edit-3" class="w-4 h-4"></i></button>
+                 <button onclick="window.removeProduct(${item.originalIdx})" class="p-2 text-slate-300 hover:text-red-500 transition-colors"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+              </div>
+            </div>`;
+        });
+
+        catHtml += `</div></div>`;
+        list.innerHTML += catHtml;
+      });
+
+      window.refreshIcons();
+    };
+
+    window.removeProduct = async (idx) => {
+      state.config.sizes.splice(idx, 1);
+      await window.saveConfigSafe({ sizes: state.config.sizes });
+      window.renderStockAdmin();
+      window.renderMenu();
+    };
+
+    window.renderPostsAdmin = () => {
+      const list = document.getElementById('admin-posts-list');
+      if (!list) return;
+      list.innerHTML = "";
+      (state.config.posts || []).forEach((post, idx) => {
+        list.innerHTML += `
+          <div class="bg-white p-5 rounded-3xl border border-slate-100 shadow-sm transition-all hover:border-brand-200">
+            <div class="flex flex-col gap-3">
+              <div class="flex justify-between items-start">
+                 <h4 class="text-xs font-black text-slate-800 leading-tight">${post.title}</h4>
+                 <div class="flex gap-1">
+                   <button onclick="window.removePost(${idx})" class="p-2 text-slate-300 hover:text-red-500 transition-colors"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                 </div>
+              </div>
+              <p class="text-[10px] text-slate-500 leading-relaxed font-medium">${post.message}</p>
+              ${post.image ? `<div class="w-full h-32 rounded-2xl bg-slate-100 overflow-hidden shadow-inner"><img src="${post.image}" class="w-full h-full object-cover"></div>` : ''}
+              <div class="flex items-center gap-2 mt-1">
+                <span class="text-[9px] font-black uppercase tracking-widest text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Ativo</span>
+              </div>
+            </div>
+          </div>`;
+      });
+      window.refreshIcons();
+    };
+
+    window.removePost = async (idx) => {
+      state.config.posts.splice(idx, 1);
+      await window.saveConfigSafe({ posts: state.config.posts });
+      window.renderPostsAdmin();
+      window.renderPosts();
+    };
+
+    window.removeHighlight = async (idx) => {
+      state.config.highlights.splice(idx, 1);
+      await window.saveConfigSafe({ highlights: state.config.highlights });
+      window.renderHighlightsAdmin();
+      window.renderHighlights();
+    };
+
+    window.renderHighlightsAdmin = () => {
+      const list = document.getElementById('admin-highlights-list');
+      if (!list) return;
+      list.innerHTML = "";
+      (state.config.highlights || []).forEach((h, idx) => {
+        list.innerHTML += `
+          <div class="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm flex items-center gap-4 group transition-all hover:border-brand-200">
+            <div class="w-16 h-12 rounded-xl bg-slate-100 overflow-hidden shrink-0 shadow-inner">
+               ${h.image ? `<img src="${h.image}" class="w-full h-full object-cover">` : '<div class="w-full h-full flex items-center justify-center text-[10px] text-slate-300">Sem imagem</div>'}
+            </div>
+            <div class="flex-1" onclick="window.openEditModal('highlight', ${idx})">
+              <p class="text-xs font-black text-slate-800">${h.title || 'Sem título'}</p>
+              <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">${h.badge || 'Destaque'}</p>
+            </div>
+            <div class="flex gap-1">
+               <button onclick="window.openEditModal('highlight', ${idx})" class="p-2 text-slate-300 hover:text-brand-600 transition-colors"><i data-lucide="edit-3" class="w-4 h-4"></i></button>
+               <button onclick="window.removeHighlight(${idx})" class="p-2 text-slate-300 hover:text-red-500 transition-colors"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+            </div>
+          </div>`;
+      });
+      window.refreshIcons();
+    };
+
+    window.addHighlight = async () => {
+      const title = document.getElementById('new-hl-title')?.value;
+      const subtitle = document.getElementById('new-hl-subtitle')?.value;
+      const badge = document.getElementById('new-hl-badge')?.value;
+      const image = document.getElementById('new-hl-image')?.value;
+      const icon = document.getElementById('new-hl-icon')?.value || 'star';
+      const color = document.getElementById('new-hl-color')?.value || 'brand';
+
+      if (!title) return window.toast("Título obrigatório!", "error");
+
+      const newHL = { title, subtitle, badge, image, icon, color };
+      if (!state.config.highlights) state.config.highlights = [];
+      state.config.highlights.push(newHL);
+      await window.saveConfigSafe({ highlights: state.config.highlights });
+      window.toast("Destaque Adicionado!");
+      window.renderHighlightsAdmin();
+      window.renderHighlights();
+    };
+
+    window.renderZonesAdmin = () => {
+      const list = document.getElementById('admin-zones-list');
+      if (!list) return;
+      list.innerHTML = "";
+      (state.config.zones || []).forEach((z, idx) => {
+        list.innerHTML += `
+          <div class="flex justify-between items-center bg-white p-4 rounded-2xl border border-slate-100 shadow-sm mb-2 group transition-all hover:border-brand-200">
+            <div class="flex-1" onclick="window.openEditModal('zone', ${idx})">
+              <p class="text-xs font-black text-slate-800">${z.name}</p>
+              <p class="text-[10px] text-brand-600 font-bold uppercase tracking-widest">R$ ${z.price.toFixed(2).replace('.', ',')}</p>
+            </div>
+            <div class="flex gap-1">
+               <button onclick="window.openEditModal('zone', ${idx})" class="p-2 text-slate-300 hover:text-brand-600 transition-colors"><i data-lucide="edit-3" class="w-4 h-4"></i></button>
+               <button onclick="window.removeZone(${idx})" class="p-2 text-slate-300 hover:text-red-500 transition-colors"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+            </div>
+          </div>`;
+      });
+      window.refreshIcons();
+    };
+
+    window.removeZone = async (idx) => {
+      state.config.zones.splice(idx, 1);
+      await window.saveConfigSafe({ zones: state.config.zones });
+      window.renderZonesAdmin();
+    };
+
+    window.renderStockIngAdmin = () => {
+      const list = document.getElementById('stock-ing-list');
+      if (!list) return;
+      list.innerHTML = "";
+
+      const sections = [
+        { key: 'base', label: 'Bases' },
+        { key: 'queijos', label: 'Queijos' },
+        { key: 'extras', label: 'Extras' }
+      ];
+
+      sections.forEach(sec => {
+        const ings = state.config.accompaniments?.[sec.key] || [];
+        list.innerHTML += `<p class="text-[10px] font-black uppercase text-slate-400 mt-6 first:mt-0 mb-2 ml-1 tracking-widest">${sec.label}</p>`;
+        ings.forEach((ing, idx) => {
+          list.innerHTML += `
+            <div class="flex justify-between items-center bg-white p-4 rounded-3xl border border-slate-100 mb-2 shadow-sm transition-all hover:border-brand-200">
+              <span class="text-xs font-black text-slate-800 flex-1 cursor-pointer" onclick="window.openEditModal('ingredient', '${sec.key}|${idx}')">${ing.name}</span>
+              <div class="flex gap-1">
+                <button onclick="window.openEditModal('ingredient', '${sec.key}|${idx}')" class="p-2 text-slate-300 hover:text-brand-600 transition-colors"><i data-lucide="edit-3" class="w-4 h-4"></i></button>
+                <button onclick="window.removeIngredient('${sec.key}', ${idx})" class="p-2 text-slate-300 hover:text-red-500 transition-colors"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+              </div>
+            </div>`;
+        });
+      });
+      window.refreshIcons();
+    };
+
+    window.addIngredient = async (key) => {
+      const name = document.getElementById(`new-ing-${key}`)?.value;
+      if (!name) return;
+      if (!state.config.accompaniments) state.config.accompaniments = { base: [], queijos: [], extras: [] };
+      if (!state.config.accompaniments[key]) state.config.accompaniments[key] = [];
+
+      state.config.accompaniments[key].push({ name, available: true });
+      await window.saveConfigSafe({ accompaniments: state.config.accompaniments });
+      document.getElementById(`new-ing-${key}`).value = "";
+      window.renderStockIngAdmin();
+    };
+
+    window.removeIngredient = async (key, idx) => {
+      state.config.accompaniments[key].splice(idx, 1);
+      await window.saveConfigSafe({ accompaniments: state.config.accompaniments });
+      window.renderStockIngAdmin();
+    };
+
+    window.renderOrdersAdmin = () => {
+      if (!db || state._ordersUnsub) return;
+      const q = query(getCollectionRef("pedidos"), orderBy("date", "desc"), fbLimit(50));
+      state._ordersUnsub = onSnapshot(q, (snap) => {
+        const list = document.getElementById('orders-list');
+        if (!list) return;
+        list.innerHTML = "";
+        snap.forEach(docSnap => {
+          const order = docSnap.data();
+          const items = JSON.parse(order.cartDetails || '[]');
+          const status = order.status || 'Novo';
+          const nextStatus = status === 'Novo' ? 'Em Preparo' : (status === 'Em Preparo' ? 'Saiu p/ Entrega' : 'Entregue');
+
+          list.innerHTML += `
+            <div class="bg-white p-5 rounded-3xl border border-slate-100 shadow-sm mb-4">
+              <div class="flex justify-between items-start mb-3">
+                <div>
+                  <h4 class="text-sm font-black text-slate-800">${order.clientName}</h4>
+                  <p class="text-[10px] text-slate-400 font-bold uppercase">${new Date(order.date).toLocaleString('pt-BR')}</p>
+                </div>
+                <span class="bg-blue-50 text-blue-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">${status}</span>
+              </div>
+              <div class="space-y-1 mb-4">
+                ${items.map(i => `<p class="text-xs text-slate-600 font-medium">● ${i.qty}x ${i.name}</p>`).join('')}
+              </div>
+              <div class="flex flex-wrap gap-2 pt-3 border-t border-slate-50">
+                <p class="text-base font-black text-slate-900 flex-1">${order.total}</p>
+                ${status !== 'Entregue' ? `<button onclick="window.updateOrderStatus('${docSnap.id}', '${nextStatus}')" class="text-[10px] font-black bg-brand-600 text-white px-3 py-1.5 rounded-lg active:scale-95 transition-all">Mudar para ${nextStatus}</button>` : ''}
+                <button onclick="window.deleteOrder('${docSnap.id}')" class="p-2 text-red-400 hover:text-red-500"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+              </div>
+            </div>`;
+        });
+        window.refreshIcons();
+      });
+    };
+
+    window.updateOrderStatus = async (id, status) => {
+      try {
+        await updateDoc(doc(db, "pedidos", id), { status });
+        window.toast(`Status: ${status}`);
+      } catch (e) {
+        window.toast("Erro ao atualizar", "error");
+      }
+    };
+
+    window.previewPastedImage = (url) => {
+      const img = document.getElementById('post-image-preview');
+      const container = document.getElementById('image-preview-container');
+      if (url) {
+        img.src = url;
+        container.classList.remove('hidden');
+      } else {
+        container.classList.add('hidden');
+      }
+    };
+
+    window.handlePostImage = (input) => {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          document.getElementById('post-image-preview').src = e.target.result;
+          document.getElementById('image-preview-container').classList.remove('hidden');
+          // For standalone, we might just use the base64 or a fake storage service
+          // Here we just preview. To persist, we need an actual storage.
+          // For now, let's just use the URL.
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    };
+
+    window.clearPostImage = () => {
+      document.getElementById('post-image-url').value = "";
+      document.getElementById('post-image-file').value = "";
+      document.getElementById('image-preview-container').classList.add('hidden');
+    };
+
+    window.deleteOrder = async (id) => {
+      if (confirm("Deletar pedido?")) {
+        await deleteDoc(doc(db, "pedidos", id));
+      }
+    };
+
+    window.handleAdminClick = () => {
+      const modal = document.getElementById('admin-modal');
+      if (modal) modal.classList.remove('hidden');
+    };
+
+    window.openChat = () => {
+      const phone = state.config.phone || '5500000000000';
+      const text = encodeURIComponent("Olá! Gostaria de tirar uma dúvida.");
+      window.open(`https://wa.me/${phone.replace(/\D/g, '')}?text=${text}`, '_blank');
+    };
+
+
+    window.toggleCart = (show) => {
+      const drawer = document.getElementById('cart-drawer');
+      const back = document.getElementById('cart-backdrop');
+      if (show) {
+        window.renderCart();
+        back.classList.remove('invisible', 'opacity-0');
+        drawer.classList.remove('translate-x-full');
+      } else {
+        back.classList.add('opacity-0');
+        drawer.classList.add('translate-x-full');
+        setTimeout(() => back.classList.add('invisible'), 300);
+      }
+    };
+
+    window.filterCategory = (cat) => {
+      const subTabs = document.getElementById('pastel-subtabs');
+
+      if (cat === 'Salgados' || cat === 'Doces' || cat === 'Monte o Seu') {
+        state.filter = (state.filter === 'Pastelão') ? 'Pastelão' : 'Pastéis';
+        state.pastelSubFilter = cat;
+        subTabs.classList.remove('hidden');
+      } else {
+        state.filter = cat;
+        if (cat === 'Pastéis' || cat === 'Pastelão') {
+          subTabs.classList.remove('hidden');
+          if (!state.pastelSubFilter) state.pastelSubFilter = 'Salgados';
+        } else {
+          subTabs.classList.add('hidden');
+        }
+      }
+
+      if (state.filter === 'Pastéis' || state.filter === 'Pastelão') {
+        window.filterPastelSub(state.pastelSubFilter);
+      }
+
+      document.querySelectorAll('.cat-btn').forEach(b => {
+        const isSelected = b.dataset.cat === state.filter;
+        b.className = isSelected
+          ? "cat-btn active px-6 py-2.5 rounded-full text-xs font-black bg-brand-900 text-white shadow-lg whitespace-nowrap active:scale-95 transition-all"
+          : "cat-btn px-6 py-2.5 rounded-full text-xs font-black bg-white text-slate-500 border border-slate-200 whitespace-nowrap active:scale-95 transition-all";
+      });
+      window.renderMenu();
+    };
+
+    window.filterPastelSub = (sub) => {
+      state.pastelSubFilter = sub;
+      const btns = ['Salgados', 'Doces', 'Monte o Seu'];
+      btns.forEach(b => {
+        const el = document.getElementById(`sub-${b}`);
+        if (el) {
+          el.className = b === sub
+            ? "px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all bg-brand-900 text-white shadow-sm"
+            : "px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all text-slate-400 hover:text-slate-600";
+        }
+      });
+      window.renderMenu();
+    };
+
+    window.toggleSelection = (name) => {
+      if (state.selectedItems.has(name)) state.selectedItems.delete(name);
+      else state.selectedItems.add(name);
+      window.renderMenu();
+      window.updateTotalBar();
+    };
+
+    window.updateQty = (d) => {
+      state.qty = Math.max(1, state.qty + d);
+      const el = document.getElementById('qty-display');
+      if (el) el.innerText = state.qty;
+      window.updateTotalBar();
+    };
+
+    window.updateTotalBar = () => {
+      let total = 0;
+      (state.config.sizes || []).forEach(i => { if (state.selectedItems.has(i.name)) total += i.price; });
+      const final = total * state.qty;
+      const priceDisplay = document.getElementById('price-display');
+      if (priceDisplay) priceDisplay.innerText = `R$ ${final.toFixed(2).replace('.', ',')}`;
+      const btn = document.getElementById('btn-add');
+      if (btn) {
+        if (final > 0) {
+          btn.disabled = false;
+          btn.classList.replace('bg-slate-900', 'bg-brand-900');
+        } else {
+          btn.disabled = true;
+          btn.classList.replace('bg-brand-900', 'bg-slate-900');
+        }
+      }
+    };
+
+    window.addToCart = () => {
+      if (state.selectedItems.size === 0) return window.toast("Selecione!", "error");
+      const obsInput = document.getElementById('obs-input');
+      const obs = obsInput ? obsInput.value.trim() : "";
+
+      (state.config.sizes || []).forEach(i => {
+        if (state.selectedItems.has(i.name)) {
+          const idx = state.cart.findIndex(c => c.name === i.name && c.obs === obs);
+          if (idx > -1) state.cart[idx].qty += state.qty;
+          else state.cart.push({ id: Date.now() + Math.random(), name: i.name, price: i.price, obs, qty: state.qty });
+        }
+      });
+
+      state.selectedItems.clear();
+      state.qty = 1;
+      const qtyDisplay = document.getElementById('qty-display');
+      if (qtyDisplay) qtyDisplay.innerText = "1";
+      if (obsInput) obsInput.value = "";
+
+      window.renderMenu();
+      window.updateTotalBar();
+      saveCart();
+      window.renderCart();
+      window.toast("Adicionado!");
+      setTimeout(() => window.toggleCart(true), 300);
+    };
+
+    window.modCartItem = (id, d) => {
+      const idx = state.cart.findIndex(c => c.id === id);
+      if (idx > -1) {
+        state.cart[idx].qty += d;
+        if (state.cart[idx].qty <= 0) state.cart.splice(idx, 1);
+        saveCart();
+        window.renderCart();
+      }
+    };
+
+    window.renderCart = () => {
+      const list = document.getElementById('cart-items');
+      if (!list) return;
+      list.innerHTML = "";
+      let subtotal = 0;
+      let count = 0;
+
+      if (state.cart.length === 0) {
+        list.innerHTML = `<div class="flex flex-col items-center justify-center py-10 opacity-50"><i data-lucide="shopping-cart" class="w-12 h-12 text-slate-300 mb-2"></i><p class="text-sm font-bold text-slate-400">Vazio</p></div>`;
+        document.getElementById('checkout-form').classList.add('hidden');
+      } else {
+        document.getElementById('checkout-form').classList.remove('hidden');
+        state.cart.forEach(item => {
+          subtotal += item.price * item.qty;
+          count += item.qty;
+          list.innerHTML += `
+        <div class="flex justify-between items-start bg-white p-4 rounded-2xl border border-slate-100 shadow-sm animate-slide-up">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="bg-brand-50 text-brand-600 text-[10px] font-black px-2 py-0.5 rounded-lg">${item.qty}x</span>
+              <span class="font-bold text-sm text-slate-800">${item.name}</span>
+            </div>
+            ${item.obs ? `<p class="text-[10px] text-slate-400 mt-1 italic line-clamp-2">${item.obs}</p>` : ''}
+            <p class="text-xs font-bold text-brand-600 mt-1.5">R$ ${(item.price * item.qty).toFixed(2).replace('.', ',')}</p>
+          </div>
+          <div class="flex items-center bg-slate-50 rounded-xl h-9 border border-slate-200">
+            <button onclick="window.modCartItem(${item.id}, -1)" class="w-9 active:text-red-500 font-bold">-</button>
+            <button onclick="window.modCartItem(${item.id}, 1)" class="w-9 active:text-green-500 font-bold">+</button>
+          </div>
+        </div>`;
+        });
+      }
+
+      let shipping = 0;
+      if (state.deliveryType === 'Entrega') {
+        const zone = document.getElementById('delivery-zone');
+        if (zone && zone.selectedIndex >= 0) {
+          const opt = zone.options[zone.selectedIndex];
+          if (opt.dataset.price) {
+            shipping = parseFloat(opt.dataset.price);
+          }
+        }
+      }
+
+      const totalEl = document.getElementById('cart-total');
+      if (totalEl) totalEl.innerText = `R$ ${(subtotal + shipping).toFixed(2).replace('.', ',')}`;
+
+      const badge = document.getElementById('cart-count');
+      if (badge) {
+        badge.innerText = count;
+        badge.className = `absolute -top-1 -right-1 bg-brand-600 text-white text-[9px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white transform transition-transform shadow-sm ${count > 0 ? 'scale-100' : 'scale-0'}`;
+      }
+
+      window.validateCheckout();
+      window.refreshIcons();
+    };
+
+    window.setDelivery = (type) => {
+      state.deliveryType = type;
+      const btnRet = document.getElementById('btn-retirada');
+      const btnEnt = document.getElementById('btn-entrega');
+      const details = document.getElementById('delivery-details');
+      const base = "p-4 border-2 rounded-2xl text-xs font-black uppercase tracking-wide transition-all";
+
+      if (type === 'Retirada') {
+        if (btnRet) btnRet.className = `${base} border-brand-600 bg-brand-50 text-brand-700`;
+        if (btnEnt) btnEnt.className = `${base} border-slate-100 text-slate-400`;
+        if (details) details.classList.add('hidden');
+      } else {
+        if (btnEnt) btnEnt.className = `${base} border-brand-600 bg-brand-50 text-brand-700`;
+        if (btnRet) btnRet.className = `${base} border-slate-100 text-slate-400`;
+        if (details) details.classList.remove('hidden');
+
+        const sel = document.getElementById('delivery-zone');
+        if (sel) {
+          if (sel.options.length <= 1) {
+            sel.innerHTML = '<option value="" disabled selected>Onde entregamos?</option>';
+            (state.config.zones || []).forEach((z, index) => {
+              const txt = z.price === 0 ? "Grátis" : `+R$ ${z.price.toFixed(2)}`;
+              sel.innerHTML += `<option value="${index}" data-price="${z.price}" data-name="${z.name}">${z.name} (${txt})</option>`;
+            });
+          }
+        }
+      }
+      window.renderCart();
+      window.saveFormData();
+    };
+
+    window.handlePaymentChange = () => {
+      const method = document.getElementById('payment-method').value;
+      const pixArea = document.getElementById('pix-area');
+      state.paymentVerified = !!method;
+
+      if (method === 'Pix') {
+        if (pixArea) {
+          pixArea.classList.remove('hidden');
+          const keyEl = document.getElementById('pix-key');
+          if (keyEl) keyEl.value = state.config.pixKey || '';
+          const nameEl = document.getElementById('pix-name-display');
+          if (nameEl && state.config.pixName) nameEl.innerText = `Titular: ${state.config.pixName}`;
+        }
+      } else {
+        if (pixArea) pixArea.classList.add('hidden');
+      }
+      window.validateCheckout();
+    };
+
+    window.copyPix = () => {
+      const k = document.getElementById('pix-key');
+      if (k) {
+        k.select();
+        document.execCommand('copy');
+        window.toast("Chave Copiada!");
+      }
+    };
+
+    window.openPastelModal = (item) => {
+      state.currentPastel = item;
+      state.pastelQty = 1;
+      document.getElementById('pastel-modal-title').innerText = item.name;
+      document.querySelector('#pastel-modal p').innerText = "Escolha até 3 acompanhamentos e 1 tempero";
+      document.getElementById('pastel-qty-display').innerText = "1";
+      document.getElementById('pastel-total-price').innerText = `R$ ${item.price.toFixed(2).replace('.', ',')}`;
+
+      const container = document.getElementById('pastel-options-container');
+      container.innerHTML = "";
+
+      container.innerHTML += `
+        <div class="mb-4 bg-yellow-50 border border-yellow-200 p-4 rounded-2xl flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center">
+                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+            </div>
+            <div>
+                <h4 class="text-xs font-black text-yellow-800 uppercase">Base Inclusa</h4>
+                <p class="text-sm font-bold text-slate-700">Massa Crocante Tradicional</p>
+            </div>
+        </div>
+    `;
+
+      const renderSection = (title, options, type) => {
+        let html = `<div class="mb-6"><h4 class="text-sm font-black text-slate-700 uppercase mb-3 flex items-center gap-2"><div class="w-1.5 h-4 bg-brand-500 rounded-full"></div>${title}</h4><div class="grid grid-cols-2 gap-3">`;
+
+        const availableOptions = (options || []).filter(o => o.available !== false);
+
+        if (availableOptions.length === 0) {
+          html += `<p class="text-xs text-slate-400 italic p-2">Indisponível no momento.</p>`;
+        } else {
+          availableOptions.forEach(opt => {
+            html += `
+                    <label class="cursor-pointer relative group">
+                        <input type="checkbox" class="option-checkbox limit-global hidden" value="${opt.name}" data-type="${type}" onchange="window.checkBuilderLimits(this)">
+                        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-500 transition-all hover:bg-white hover:shadow-sm flex items-center justify-between">
+                            <span>${opt.name}</span>
+                            <div class="w-4 h-4 rounded-full border border-slate-300 flex items-center justify-center bg-white group-active:scale-90">
+                                <i data-lucide="check" class="check-icon-sm w-3 h-3 text-brand-600 opacity-0 transform scale-50 transition-all stroke-[4]"></i>
+                            </div>
+                        </div>
+                    </label>
+                `;
+          });
+        }
+        html += `</div></div>`;
+        return html;
+      };
+
+      let acc = state.config.accompaniments;
+      if (!acc || !acc.base || acc.base.length === 0 || acc.base.some(b => b.name === "Proteína 1")) {
+        acc = {
+          base: [
+            { name: "Q. Coalho", available: true },
+            { name: "Mussarela", available: true },
+            { name: "C. Cheese", available: true },
+            { name: "Cheddar", available: true },
+            { name: "Catupiry", available: true },
+            { name: "Cebola C.", available: true },
+            { name: "Calabresa", available: true },
+            { name: "Bacon", available: true },
+            { name: "Presunto", available: true },
+            { name: "Milho", available: true },
+            { name: "Azeitona", available: true },
+            { name: "Picles", available: true },
+            { name: "Goiabada", available: true },
+            { name: "Banana", available: true },
+            { name: "Morango", available: true },
+            { name: "Paçoca", available: true },
+            { name: "Leite em Pó", available: true },
+            { name: "Gotas", available: true }
+          ],
+          queijos: [
+            { name: "Orégano", available: true },
+            { name: "Churrasco", available: true },
+            { name: "Alho Frito", available: true },
+            { name: "Lemon Pepper", available: true },
+            { name: "Pimenta C", available: true },
+            { name: "Edu Guedes", available: true },
+            { name: "Ana Maria", available: true },
+            { name: "Páprica D.", available: true },
+            { name: "Chipótle", available: true }
+          ],
+          extras: []
+        };
+        // Auto-save to firebase so it persists
+        if (typeof window.saveConfigSafe === 'function') {
+          setTimeout(() => window.saveConfigSafe({ accompaniments: acc }, true), 500);
+        }
+      }
+      container.innerHTML += renderSection("Acompanhamentos Grátis", acc.base, "base");
+      container.innerHTML += renderSection("Temperos", acc.queijos, "queijos");
+      container.innerHTML += renderSection("Extras", acc.extras, "extras");
+
+      document.getElementById('pastel-modal').classList.remove('hidden');
+      window.refreshIcons();
+    };
+
+    window.closePastelModal = () => {
+      document.getElementById('pastel-modal').classList.add('hidden');
+      state.currentPastel = null;
+    };
+
+    window.checkBuilderLimits = (checkbox) => {
+      const type = checkbox.dataset.type;
+      if (!type) return;
+
+      // Limit: 3 Accompaniments (base), 1 Tempero (queijos)
+      const limit = type === 'base' ? 3 : (type === 'queijos' ? 1 : 99);
+
+      const sameTypeCheckboxes = document.querySelectorAll(`.limit-global[data-type="${type}"]`);
+      const checkedCount = Array.from(sameTypeCheckboxes).filter(cb => cb.checked).length;
+
+      if (checkedCount >= limit) {
+        sameTypeCheckboxes.forEach(cb => {
+          if (!cb.checked) cb.disabled = true;
+        });
+      } else {
+        sameTypeCheckboxes.forEach(cb => cb.disabled = false);
+      }
+    };
+
+    window.updatePastelQty = (d) => {
+      state.pastelQty = Math.max(1, state.pastelQty + d);
+      document.getElementById('pastel-qty-display').innerText = state.pastelQty;
+      if (state.currentPastel) {
+        const total = state.currentPastel.price * state.pastelQty;
+        document.getElementById('pastel-total-price').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+      }
+    };
+
+    window.addPastelToCart = () => {
+      if (!state.currentPastel) return;
+
+      const checkboxes = document.querySelectorAll('.option-checkbox:checked');
+      const selectedOptions = Array.from(checkboxes).map(cb => cb.value);
+
+      let obsText = "";
+      if (selectedOptions.length > 0) {
+        obsText = `Montagem: ${selectedOptions.join(', ')}`;
+      } else {
+        obsText = `Somente Massa`;
+      }
+
+      const idx = state.cart.findIndex(c => c.name === state.currentPastel.name && c.obs === obsText);
+
+      if (idx > -1) {
+        state.cart[idx].qty += state.pastelQty;
+      } else {
+        state.cart.push({
+          id: Date.now() + Math.random(),
+          name: state.currentPastel.name,
+          price: state.currentPastel.price,
+          obs: obsText,
+          qty: state.pastelQty
+        });
+      }
+
+      saveCart();
+      window.renderCart();
+      window.closePastelModal();
+      window.toast("Adicionado com sucesso!");
+      setTimeout(() => window.toggleCart(true), 300);
+    };
+
+    // ─── AÇAÍ CUSTOMIZATION MODAL ───────────────────────────────────────────────
+
+    window.openAcaiModal = (item) => {
+      state.currentAcai = item;
+      state.acaiQty = 1;
+      state.acaiExtrasTotal = 0;
+
+      document.getElementById('acai-modal-title').innerText = item.name;
+      document.getElementById('acai-qty-display').innerText = '1';
+      document.getElementById('acai-total-price').innerText = `R$ ${item.price.toFixed(2).replace('.', ',')}`;
+
+      const container = document.getElementById('acai-options-container');
+      container.innerHTML = '';
+
+      // Info card
+      container.innerHTML += `
+    <div class="bg-purple-50 border border-purple-100 p-4 rounded-2xl flex items-center gap-3 mb-2">
+      <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-lg shrink-0">🍇</div>
+      <div>
+        <h4 class="text-xs font-black text-purple-800 uppercase">Base Inclusa</h4>
+        <p class="text-sm font-bold text-slate-700">${item.name} — Puro Açaí</p>
+      </div>
+    </div>
+  `;
+
+      // Get açaí-specific adicionais from the menu (exclude burger extras)
+      // Get açaí-specific adicionais from the menu (exclude burger extras)
+      const adicionais = (state.config.sizes || []).filter(i => {
+        if (i.available === false || i.category !== 'Adicionais') return false;
+        const n = i.name || '';
+        return n.startsWith('Adicional:') || n.startsWith('Calda:');
+      });
+
+      if (adicionais.length === 0) {
+        container.innerHTML += `<p class="text-slate-400 text-sm italic text-center py-4">Nenhum adicional cadastrado no momento.</p>`;
+      } else {
+        // Group by type (Adicional:, Calda:, others)
+        const grupos = {};
+        adicionais.forEach(a => {
+          const prefix = a.name.includes('Calda:') ? 'Caldas' : a.name.includes('Adicional:') ? 'Adicionais & Frutas' : 'Extras';
+          if (!grupos[prefix]) grupos[prefix] = [];
+          const displayName = a.name.replace(/^(Adicional:|Calda:)\s*/i, '').trim();
+          grupos[prefix].push({ ...a, displayName });
+        });
+
+        Object.entries(grupos).forEach(([grupo, itens]) => {
+          const emoji = grupo === 'Caldas' ? '🍫' : grupo === 'Adicionais & Frutas' ? '🍓' : '✨';
+          let html = `<div class="mb-2">
+        <h4 class="text-xs font-black text-slate-500 uppercase tracking-widest mb-3 flex items-center gap-2">
+          <span>${emoji}</span> ${grupo}
+        </h4>
+        <div class="grid grid-cols-2 gap-2">`;
+
+          itens.forEach(opt => {
+            const priceStr = opt.price > 0 ? `+R$ ${opt.price.toFixed(2).replace('.', ',')}` : 'Incluso';
+            html += `
+          <label class="cursor-pointer group">
+            <input type="checkbox" class="acai-extra-checkbox hidden" value="${opt.name}" data-price="${opt.price}" onchange="window.updateAcaiExtrasTotal()">
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 hover:bg-purple-50 hover:border-purple-200 transition-all flex items-center justify-between gap-2">
+              <span>${opt.displayName}</span>
+              <div class="flex flex-col items-end gap-1 shrink-0">
+                <span class="text-[10px] text-purple-500 font-bold">${priceStr}</span>
+                <div class="w-4 h-4 rounded-full border border-slate-300 shrink-0 flex items-center justify-center bg-white group-active:scale-90">
+                  <i data-lucide="check" class="check-icon-sm w-3 h-3 text-purple-600 opacity-0 transform scale-50 transition-all stroke-[4]"></i>
+                </div>
+              </div>
+            </div>
+          </label>`;
+          });
+          html += `</div></div>`;
+          container.innerHTML += html;
+        });
+      }
+
+      // Obs field
+      container.innerHTML += `
+    <div class="mt-2">
+      <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">Observação</label>
+      <textarea id="acai-obs" rows="2" placeholder="Ex: sem granola, leite condensado por fora..." class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm outline-none focus:border-purple-300 resize-none"></textarea>
+    </div>
+  `;
+
+      document.getElementById('acai-modal').classList.remove('hidden');
+      window.refreshIcons();
+
+      // Wire up checkbox visual state
+      document.querySelectorAll('.acai-extra-checkbox').forEach(cb => {
+        cb.addEventListener('change', () => {
+          const label = cb.closest('label').querySelector('div > div.w-4');
+          const checkIcon = label?.querySelector('.check-icon-sm');
+          const card = cb.closest('label').querySelector('div');
+          if (cb.checked) {
+            card?.classList.add('bg-purple-50', 'border-purple-400');
+            card?.classList.remove('bg-slate-50', 'border-slate-200');
+            if (checkIcon) { checkIcon.style.opacity = '1'; checkIcon.style.transform = 'scale(1)'; }
+          } else {
+            card?.classList.remove('bg-purple-50', 'border-purple-400');
+            card?.classList.add('bg-slate-50', 'border-slate-200');
+            if (checkIcon) { checkIcon.style.opacity = '0'; checkIcon.style.transform = 'scale(0.5)'; }
+          }
+        });
+      });
+    };
+
+
+    window.openSucoModal = (item) => {
+      state.currentSuco = item;
+      state.sucoQty = 1;
+
+      document.getElementById('suco-modal-title').innerText = item.name;
+      document.getElementById('suco-qty-display').innerText = '1';
+      document.getElementById('suco-total-price').innerText = `R$ ${item.price.toFixed(2).replace('.', ',')}`;
+
+      const container = document.getElementById('suco-options-container');
+      container.innerHTML = '';
+
+      const flavors = ['Laranja', 'Maracujá', 'Maracujá c/ beterraba', 'Mangaba', 'Graviola', 'Umbu', 'Manga', 'Caju'];
+
+      let html = `<h4 class="text-xs font-black text-slate-500 uppercase tracking-widest mb-3">Selecione o Sabor</h4>
+    <div class="grid grid-cols-2 gap-2">`;
+
+      flavors.forEach((opt, idx) => {
+        html += `
+      <label class="cursor-pointer group">
+        <input type="radio" name="suco-flavor" class="suco-flavor-radio hidden" value="${opt}" ${idx === 0 ? 'checked' : ''} onchange="window.updateSucoSelection()">
+        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 hover:bg-orange-50 hover:border-orange-200 transition-all flex items-center justify-between">
+          <span>${opt}</span>
+          <div class="w-4 h-4 rounded-full border border-slate-300 flex items-center justify-center bg-white group-active:scale-90">
+            <div class="flavor-dot w-2.5 h-2.5 bg-orange-500 rounded-full scale-0 transition-transform"></div>
+          </div>
+        </div>
+      </label>`;
+      });
+      html += `</div>`;
+      container.innerHTML += html;
+
+      // Obs field
+      container.innerHTML += `
+    <div class="mt-4">
+      <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">Observação</label>
+      <textarea id="suco-obs" rows="2" placeholder="Ex: sem açúcar, com gelo..." class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange-300 resize-none"></textarea>
+    </div>
+  `;
+
+      document.getElementById('suco-modal').classList.remove('hidden');
+      window.refreshIcons();
+      window.updateSucoSelection();
+    };
+
+
+    // ==================== BURGER MODAL ====================
+    window.openBurgerModal = (item) => {
+      state.currentBurger = item;
+      state.burgerQty = 1;
+      state.burgerExtrasTotal = 0;
+
+      document.getElementById('burger-modal-title').innerText = item.name;
+      document.getElementById('burger-qty-display').innerText = '1';
+      document.getElementById('burger-total-price').innerText = `R$ ${item.price.toFixed(2).replace('.', ',')}`;
+
+      const container = document.getElementById('burger-options-container');
+      container.innerHTML = '';
+
+      container.innerHTML += `
+    <div class="bg-orange-50 border border-orange-100 p-4 rounded-2xl flex items-center gap-3 mb-2">
+      <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-lg shrink-0">🍔</div>
+      <div>
+        <h4 class="text-xs font-black text-orange-800 uppercase">Inclui</h4>
+        <p class="text-sm font-bold text-slate-700 leading-tight">${item.description || 'Hambúrguer tradicional'}</p>
+      </div>
+    </div>
+  `;
+
+      const extras = (state.config.sizes || []).filter(i => i.available !== false && i.name.startsWith('Extra:'));
+
+      if (extras.length > 0) {
+        let html = `<h4 class="text-xs font-black text-slate-500 uppercase tracking-widest mb-3 mt-4 flex items-center gap-2"><span>🍟</span> Adicionais Extras</h4><div class="grid grid-cols-2 gap-2">`;
+        extras.forEach(opt => {
+          const displayName = opt.name.replace('Extra:', '').trim();
+          const priceStr = `+R$ ${opt.price.toFixed(2).replace('.', ',')}`;
+          html += `
+        <label class="cursor-pointer group">
+          <input type="checkbox" class="burger-extra-checkbox hidden" value="${displayName}" data-price="${opt.price}" onchange="window.updateBurgerExtrasTotal()">
+          <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 hover:bg-orange-50 hover:border-orange-200 transition-all flex items-center justify-between gap-1">
+            <span>${displayName}</span>
+            <div class="flex flex-col items-end shrink-0">
+              <span class="text-[10px] text-orange-600 font-bold">${priceStr}</span>
+            </div>
+          </div>
+        </label>`;
+        });
+        html += `</div>`;
+        container.innerHTML += html;
+      }
+
+      container.innerHTML += `
+    <div class="mt-4">
+      <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">Observação</label>
+      <textarea id="burger-obs" rows="2" placeholder="Ex: sem salada, molho à parte..." class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange-300 resize-none"></textarea>
+    </div>
+  `;
+
+      document.getElementById('burger-modal').classList.remove('hidden');
+      window.refreshIcons();
+
+      document.querySelectorAll('.burger-extra-checkbox').forEach(cb => {
+        cb.addEventListener('change', () => {
+          const card = cb.closest('label').querySelector('div');
+          if (cb.checked) {
+            card?.classList.add('bg-orange-50', 'border-orange-400');
+            card?.classList.remove('bg-slate-50', 'border-slate-200');
+          } else {
+            card?.classList.remove('bg-orange-50', 'border-orange-400');
+            card?.classList.add('bg-slate-50', 'border-slate-200');
+          }
+        });
+      });
+    };
+
+    window.closeBurgerModal = () => {
+      document.getElementById('burger-modal').classList.add('hidden');
+      state.currentBurger = null;
+      state.burgerExtrasTotal = 0;
+    };
+
+    window.updateBurgerExtrasTotal = () => {
+      const checkboxes = document.querySelectorAll('.burger-extra-checkbox:checked');
+      state.burgerExtrasTotal = Array.from(checkboxes).reduce((sum, cb) => sum + parseFloat(cb.dataset.price || 0), 0);
+      if (state.currentBurger) {
+        const total = (state.currentBurger.price + state.burgerExtrasTotal) * (state.burgerQty || 1);
+        document.getElementById('burger-total-price').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+      }
+    };
+
+    window.updateBurgerQty = (d) => {
+      state.burgerQty = Math.max(1, (state.burgerQty || 1) + d);
+      document.getElementById('burger-qty-display').innerText = state.burgerQty;
+      if (state.currentBurger) {
+        const total = (state.currentBurger.price + (state.burgerExtrasTotal || 0)) * state.burgerQty;
+        document.getElementById('burger-total-price').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+      }
+    };
+
+    window.addBurgerToCart = () => {
+      if (!state.currentBurger) return;
+      const extras = Array.from(document.querySelectorAll('.burger-extra-checkbox:checked')).map(cb => cb.value);
+      const obs = document.getElementById('burger-obs')?.value.trim();
+      let obsText = extras.length > 0 ? `Extras: ${extras.join(', ')}` : '';
+      if (obs) obsText += obsText ? ` | Obs: ${obs}` : `Obs: ${obs}`;
+
+      const price = state.currentBurger.price + (state.burgerExtrasTotal || 0);
+      const idx = state.cart.findIndex(c => c.name === state.currentBurger.name && c.obs === obsText && c.price === price);
+      if (idx > -1) {
+        state.cart[idx].qty += state.burgerQty;
+      } else {
+        state.cart.push({ id: Date.now() + Math.random(), name: state.currentBurger.name, price, obs: obsText, qty: state.burgerQty });
+      }
+      window.closeBurgerModal();
+      window.toast("Hambúrguer adicionado!");
+      window.renderCart();
+      window.saveFormData();
+    };
+
+    // ==================== BATATA MODAL ====================
+    window.openBatataModal = (item) => {
+      state.currentBatata = item;
+      state.batataQty = 1;
+      state.batataExtrasTotal = 0;
+
+      document.getElementById('batata-modal-title').innerText = item.name;
+      document.getElementById('batata-qty-display').innerText = '1';
+      document.getElementById('batata-total-price').innerText = `R$ ${item.price.toFixed(2).replace('.', ',')}`;
+
+      const container = document.getElementById('batata-options-container');
+      container.innerHTML = '';
+
+      const isTripla = item.name.includes('+ 3 Adicionais') || item.name.includes('(Turbinada)');
+
+      if (isTripla) {
+        container.innerHTML += `
+        <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-2xl flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center text-xl shrink-0">🍟</div>
+          <div>
+            <h4 class="text-xs font-black text-yellow-800 uppercase">Incluso</h4>
+            <p class="text-sm font-bold text-slate-700 leading-tight">Escolha 3 acompanhamentos grátis</p>
+          </div>
+        </div>
+      `;
+
+        const accompaniments = (state.config.accompaniments && state.config.accompaniments.base) ? state.config.accompaniments.base : [];
+        const extrasFull = (state.config.sizes || []).filter(i => i.available !== false && i.name.startsWith('Extra:'));
+
+        const allChoices = [
+          ...accompaniments.map(a => a.name),
+          ...extrasFull.map(e => e.name.replace('Extra:', '').trim())
+        ];
+        const uniqueChoices = [...new Set(allChoices)];
+
+        let html = `<h4 class="text-xs font-black text-slate-700 uppercase mb-3 px-1">Escolhas Inclusas: <span id="batata-counter" class="text-yellow-600 font-bold">0/3</span></h4>
+      <div class="grid grid-cols-2 gap-2 mb-6">`;
+
+        uniqueChoices.forEach(opt => {
+          html += `
+          <label class="cursor-pointer group">
+            <input type="checkbox" class="batata-adic-checkbox hidden" value="${opt}" onchange="window.checkBatataLimits(this)">
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-[11px] font-bold text-slate-500 hover:bg-yellow-50 hover:border-yellow-200 transition-all flex items-center justify-center text-center h-full">
+              <span>${opt}</span>
+            </div>
+          </label>`;
+        });
+        html += `</div>`;
+        container.innerHTML += html;
+      }
+
+      // Paid Extras (Same as Burger)
+      const paidExtras = (state.config.sizes || []).filter(i => i.available !== false && i.name.startsWith('Extra:') && i.price > 0);
+      if (paidExtras.length > 0) {
+        let html = `<h4 class="text-xs font-black text-slate-500 uppercase tracking-widest mb-3 mt-4 px-1 flex items-center gap-2"><span>🧀</span> Adicionais Pagos</h4><div class="grid grid-cols-2 gap-2 mb-4">`;
+        paidExtras.forEach(opt => {
+          const displayName = opt.name.replace('Extra:', '').trim();
+          const priceStr = `+R$ ${opt.price.toFixed(2).replace('.', ',')}`;
+          html += `
+          <label class="cursor-pointer group">
+            <input type="checkbox" class="batata-extra-checkbox hidden" value="${displayName}" data-price="${opt.price}" onchange="window.updateBatataExtrasTotal()">
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-[11px] font-semibold text-slate-600 hover:bg-yellow-50 hover:border-yellow-200 transition-all flex items-center justify-between gap-1 h-full">
+              <span>${displayName}</span>
+              <span class="text-[9px] text-yellow-600 font-bold shrink-0">${priceStr}</span>
+            </div>
+          </label>`;
+        });
+        html += `</div>`;
+        container.innerHTML += html;
+      }
+
+      container.innerHTML += `
+    <div class="mt-4">
+      <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2 px-1">Observação</label>
+      <textarea id="batata-obs" rows="2" placeholder="Ex: menos sal, ketchup separado..." class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm outline-none focus:border-yellow-300 resize-none"></textarea>
+    </div>
+  `;
+
+      document.getElementById('batata-modal').classList.remove('hidden');
+      window.refreshIcons();
+
+      document.querySelectorAll('.batata-extra-checkbox').forEach(cb => {
+        cb.addEventListener('change', () => {
+          const card = cb.closest('label').querySelector('div');
+          if (cb.checked) {
+            card?.classList.add('bg-yellow-50', 'border-yellow-400');
+            card?.classList.remove('bg-slate-50', 'border-slate-200');
+          } else {
+            card?.classList.remove('bg-yellow-50', 'border-yellow-400');
+            card?.classList.add('bg-slate-50', 'border-slate-200');
+          }
+        });
+      });
+    };
+
+    window.updateBatataExtrasTotal = () => {
+      let extra = 0;
+      document.querySelectorAll('.batata-extra-checkbox:checked').forEach(cb => {
+        extra += parseFloat(cb.dataset.price || 0);
+      });
+      state.batataExtrasTotal = extra;
+      window.updateBatataQty(0);
+    };
+
+    window.checkBatataLimits = (cb) => {
+      const checkboxes = document.querySelectorAll('.batata-adic-checkbox');
+      const checkedCount = Array.from(checkboxes).filter(c => c.checked).length;
+      document.getElementById('batata-counter').innerText = `${checkedCount}/3`;
+
+      checkboxes.forEach(c => {
+        const card = c.closest('label').querySelector('div');
+        if (c.checked) {
+          card?.classList.add('bg-yellow-100', 'border-yellow-400', 'text-yellow-800');
+          card?.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-500');
+        } else {
+          card?.classList.remove('bg-yellow-100', 'border-yellow-400', 'text-yellow-800');
+          card?.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-500');
+          if (checkedCount >= 3) {
+            c.disabled = true;
+            card?.classList.add('opacity-50');
+          } else {
+            c.disabled = false;
+            card?.classList.remove('opacity-50');
+          }
+        }
+      });
+    };
+
+    window.closeBatataModal = () => {
+      document.getElementById('batata-modal').classList.add('hidden');
+      state.currentBatata = null;
+    };
+
+    window.updateBatataQty = (d) => {
+      state.batataQty = Math.max(1, (state.batataQty || 1) + d);
+      document.getElementById('batata-qty-display').innerText = state.batataQty;
+      if (state.currentBatata) {
+        const total = (state.currentBatata.price + (state.batataExtrasTotal || 0)) * state.batataQty;
+        document.getElementById('batata-total-price').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+      }
+    };
+
+    window.addBatataToCart = () => {
+      if (!state.currentBatata) return;
+      const isTripla = state.currentBatata.name.includes('+ 3 Adicionais') || state.currentBatata.name.includes('(Turbinada)');
+      const checkedIncluso = Array.from(document.querySelectorAll('.batata-adic-checkbox:checked')).map(cb => cb.value);
+      const checkedPaid = Array.from(document.querySelectorAll('.batata-extra-checkbox:checked')).map(cb => cb.value);
+
+      if (isTripla && checkedIncluso.length !== 3) {
+        return window.toast("Escolha exatamente 3 adicionais grátis!", "error");
+      }
+
+      const obs = document.getElementById('batata-obs')?.value.trim();
+      let parts = [];
+      if (checkedIncluso.length > 0) parts.push(`Incluso: ${checkedIncluso.join(' + ')}`);
+      if (checkedPaid.length > 0) parts.push(`Extras: ${checkedPaid.join(', ')}`);
+      if (obs) parts.push(`Obs: ${obs}`);
+
+      const obsText = parts.join(' | ');
+      const finalPrice = state.currentBatata.price + (state.batataExtrasTotal || 0);
+
+      const idx = state.cart.findIndex(c => c.name === state.currentBatata.name && c.obs === obsText);
+      if (idx > -1) {
+        state.cart[idx].qty += state.batataQty;
+      } else {
+        state.cart.push({ id: Date.now() + Math.random(), name: state.currentBatata.name, price: finalPrice, obs: obsText, qty: state.batataQty });
+      }
+      window.closeBatataModal();
+      window.toast("Batata adicionada!");
+      window.renderCart();
+      window.saveFormData();
+    };
+
+    window.closeSucoModal = () => {
+      document.getElementById('suco-modal').classList.add('hidden');
+      state.currentSuco = null;
+    };
+
+    window.updateSucoSelection = () => {
+      document.querySelectorAll('.suco-flavor-radio').forEach(radio => {
+        const card = radio.closest('label').querySelector('div');
+        const dot = radio.closest('label').querySelector('.flavor-dot');
+        if (radio.checked) {
+          card?.classList.add('bg-orange-50', 'border-orange-400');
+          card?.classList.remove('bg-slate-50', 'border-slate-200');
+          if (dot) dot.style.transform = 'scale(1)';
+        } else {
+          card?.classList.remove('bg-orange-50', 'border-orange-400');
+          card?.classList.add('bg-slate-50', 'border-slate-200');
+          if (dot) dot.style.transform = 'scale(0)';
+        }
+      });
+    };
+
+    window.updateSucoQty = (d) => {
+      state.sucoQty = Math.max(1, (state.sucoQty || 1) + d);
+      document.getElementById('suco-qty-display').innerText = state.sucoQty;
+      if (state.currentSuco) {
+        const total = state.currentSuco.price * state.sucoQty;
+        document.getElementById('suco-total-price').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+      }
+    };
+
+    window.addSucoToCart = () => {
+      if (!state.currentSuco) return;
+
+      const selectedFlavor = document.querySelector('input[name="suco-flavor"]:checked');
+      const flavorVal = selectedFlavor ? selectedFlavor.value : 'Laranja';
+      const obs = document.getElementById('suco-obs') ? document.getElementById('suco-obs').value.trim() : '';
+
+      const obsText = `Sabor: ${flavorVal}${obs ? ' | ' + obs : ''}`;
+
+      const idx = state.cart.findIndex(c => c.name === state.currentSuco.name && c.obs === obsText);
+      if (idx > -1) {
+        state.cart[idx].qty += state.sucoQty;
+      } else {
+        state.cart.push({
+          id: Date.now() + Math.random(),
+          name: state.currentSuco.name,
+          price: state.currentSuco.price,
+          obs: obsText,
+          qty: state.sucoQty
+        });
+      }
+
+      window.closeSucoModal();
+      window.toast("Suco adicionado!");
+      window.renderCart();
+      window.saveFormData();
+    };
+
+    window.closeAcaiModal = () => {
+      document.getElementById('acai-modal').classList.add('hidden');
+      state.currentAcai = null;
+      state.acaiExtrasTotal = 0;
+    };
+
+    window.updateAcaiExtrasTotal = () => {
+      const checkboxes = document.querySelectorAll('.acai-extra-checkbox:checked');
+      state.acaiExtrasTotal = Array.from(checkboxes).reduce((sum, cb) => sum + parseFloat(cb.dataset.price || 0), 0);
+      if (state.currentAcai) {
+        const total = (state.currentAcai.price + state.acaiExtrasTotal) * (state.acaiQty || 1);
+        document.getElementById('acai-total-price').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+      }
+    };
+
+    window.updateAcaiQty = (d) => {
+      state.acaiQty = Math.max(1, (state.acaiQty || 1) + d);
+      document.getElementById('acai-qty-display').innerText = state.acaiQty;
+      if (state.currentAcai) {
+        const total = (state.currentAcai.price + (state.acaiExtrasTotal || 0)) * state.acaiQty;
+        document.getElementById('acai-total-price').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+      }
+    };
+
+    window.addAcaiToCart = () => {
+      if (!state.currentAcai) return;
+
+      const extras = Array.from(document.querySelectorAll('.acai-extra-checkbox:checked')).map(cb => {
+        const name = cb.closest('label').querySelector('span')?.innerText || cb.value;
+        return name;
+      });
+      const obs = document.getElementById('acai-obs')?.value.trim();
+
+      let obsText = extras.length > 0 ? `Adicionais: ${extras.join(', ')}` : 'Sem adicionais';
+      if (obs) obsText += ` | Obs: ${obs}`;
+
+      const price = state.currentAcai.price + (state.acaiExtrasTotal || 0);
+      const idx = state.cart.findIndex(c => c.name === state.currentAcai.name && c.obs === obsText);
+
+      if (idx > -1) {
+        state.cart[idx].qty += state.acaiQty;
+      } else {
+        state.cart.push({
+          id: Date.now() + Math.random(),
+          name: state.currentAcai.name,
+          price,
+          obs: obsText,
+          qty: state.acaiQty
+        });
+      }
+
+      saveCart();
+      window.renderCart();
+      window.closeAcaiModal();
+      window.toast("Açaí adicionado! 🍇");
+      setTimeout(() => window.toggleCart(true), 300);
+    };
+
+    window.renderHighlights = () => {
+      const container = document.getElementById('highlights-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const highlights = state.config.highlights || [];
+      if (highlights.length === 0) {
+        container.parentElement.classList.add('hidden');
+        return;
+      }
+      container.parentElement.classList.remove('hidden');
+
+      highlights.forEach((h) => {
+        const colorMap = {
+          'brand': { bg: 'from-brand-500 to-red-800', badgeText: 'text-brand-700', textSmall: 'text-brand-100', filter: 'Doces' },
+          'pink': { bg: 'from-amber-400 to-orange-600', badgeText: 'text-orange-600', textSmall: 'text-orange-100', filter: 'Salgados' },
+          'orange': { bg: 'from-orange-400 to-red-600', badgeText: 'text-red-600', textSmall: 'text-red-100', filter: 'Todos' }
+        };
+        const c = colorMap[h.color || 'brand'];
+
+        container.innerHTML += `
+            <div class="relative w-[85%] sm:w-[280px] shrink-0 snap-center h-44 rounded-[2rem] overflow-hidden shadow-xl shadow-slate-900/10 group cursor-pointer active:scale-[0.98] transition-transform" onclick="window.filterCategory('${c.filter}')">
+                <div class="absolute inset-0 bg-gradient-to-br ${c.bg}"></div>
+                ${h.image ? `<img src="${h.image}" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay transition-transform duration-700 group-hover:scale-110">` : ''}
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+                
+                <div class="absolute top-4 left-4 bg-white ${c.badgeText} text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
+                    <i data-lucide="${h.icon}" class="w-3.5 h-3.5 ${h.icon === 'star' ? 'fill-current' : ''}"></i> ${h.badge}
+                </div>
+                
+                <div class="absolute bottom-5 left-5 right-5 text-white">
+                    <h3 class="font-display font-bold text-2xl leading-tight mb-1 drop-shadow-md">${h.title}</h3>
+                    <p class="text-[11px] ${c.textSmall} font-medium drop-shadow-sm">${h.subtitle}</p>
+                </div>
+            </div>
+        `;
+      });
+      window.refreshIcons();
+    };
+
+    window.renderMenu = () => {
+      const grid = document.getElementById('products-grid');
+      if (!grid) return;
+      grid.innerHTML = "";
+
+      const searchInput = document.getElementById('search-input');
+      const term = searchInput ? searchInput.value.toLowerCase() : "";
+
+      let itemsToRender = (state.config.sizes || [])
+        .filter(item => item.available !== false)
+        .filter(item => {
+          const n = item.name || '';
+          if (state.filter === 'Adicionais') return (n.startsWith('Adicional:') || n.startsWith('Calda:') || n.startsWith('Extra:')) && matches;
+          return !n.startsWith('Adicional:') && !n.startsWith('Calda:') && !n.startsWith('Extra:');
+        })
+        .filter(item => {
+          const n = item.name || '';
+          const desc = item.description || '';
+          const matches = n.toLowerCase().includes(term) || desc.toLowerCase().includes(term);
+
+          if (state.filter === 'Todos') return matches;
+          if (state.filter === 'Pastéis' || state.filter === 'Pastelão') {
+            const sweetKeywords = [
+              'doce', 'chocolate', 'morango', 'banana', 'nutella', 'beijinho',
+              'goiabada', 'brigadeiro', 'paçoca', 'ninho', 'ovomaltine',
+              'romeu', 'julieta', 'prestigio', 'prestígio', 'kinder',
+              'oreo', 'kitkat', 'kit kat', 'laka', 'sonho', 'valsa',
+              'marshmallow', 'fini', 'm&m', 'confete', 'granulado',
+              'churros', 'mel', 'açúcar', 'acucar', 'sobremesa', 'creme', 'mousse'
+            ];
+            const isDoces = item.subCategory === 'Doce' || ((item.category === 'Doces' || sweetKeywords.some(kw => n.toLowerCase().includes(kw))) && item.subCategory !== 'Salgado');
+            const isSalgados = !isDoces;
+
+            // Determine if item matches the current main category tab
+            const inFilterTab = (state.filter === 'Pastéis' && (item.category === 'Pastéis' || item.category === 'Salgados' || item.category === 'Doces' || item.category === 'Monte o Seu')) ||
+              (state.filter === 'Pastelão' && item.category === 'Pastelão');
+
+            if (!inFilterTab) return false;
+
+            // Then check sub-filter match
+            if (state.pastelSubFilter === 'Doces') return isDoces && matches;
+            if (state.pastelSubFilter === 'Monte o Seu') return item.category === 'Monte o Seu' && matches;
+            return isSalgados && matches;
+          }
+          return item.category === state.filter && matches;
+        });
+
+      itemsToRender.sort((a, b) => {
+        if (state.filter === 'Todos') {
+          const catOrder = { "Açaí": 1, "Monte o Seu": 2, "Pastéis": 3, "Salgados": 3, "Doces": 3, "Hambúrgueres": 4, "Gourmet": 5, "Batata Frita": 6, "Pastelão": 7, "Bebidas": 8, "Adicionais": 9 };
+          const catA = catOrder[a.category] || 10;
+          const catB = catOrder[b.category] || 10;
+          if (catA !== catB) return catA - catB;
+        }
+
+        const nA = a.name || '';
+        const nB = b.name || '';
+        const matchA = nA.match(/(\d+)\s*ml/i);
+        const matchB = nB.match(/(\d+)\s*ml/i);
+        const mlA = matchA ? parseInt(matchA[1]) : 9999;
+        const mlB = matchB ? parseInt(matchB[1]) : 9999;
+
+        if (mlA !== mlB) return mlA - mlB;
+        return nA.localeCompare(nB);
+      });
+
+      if (itemsToRender.length === 0) {
+        grid.innerHTML = `<div class="text-center py-10 text-slate-400 text-sm">Nada encontrado.</div>`;
+        window.refreshIcons();
+        return;
+      }
+
+      itemsToRender.forEach((item, idx) => {
+        const isSel = state.selectedItems.has(item.name);
+        const div = document.createElement('div');
+        div.style.animationDelay = `${idx * 0.05}s`;
+        div.className = `product-card bg-white p-4 rounded-[24px] border border-slate-100 flex items-center gap-4 cursor-pointer select-none relative overflow-hidden ${isSel ? 'selected' : ''}`;
+
+        div.onclick = () => {
+          if (item.name.includes('Suco da Fruta')) {
+            window.openSucoModal(item);
+          } else if (item.category === 'Hambúrgueres' || item.category === 'Gourmet') {
+            window.openBurgerModal(item);
+          } else if (item.category === 'Batata Frita' || item.category === 'Porções') {
+            window.openBatataModal(item);
+          } else if (item.category === 'Pastelão' || item.category === 'Monte o Seu') {
+            window.openPastelModal(item);
+          } else if (item.category === 'Açaí') {
+            window.openAcaiModal(item);
+          } else {
+            window.toggleSelection(item.name);
+          }
+        };
+
+        const isAcai = item.category === 'Açaí';
+        const isPasteis = item.category === 'Pastéis' || item.category === 'Pastelão' || item.category === 'Monte o Seu';
+        const isBurger = item.category === 'Hambúrgueres' || item.category === 'Gourmet';
+        const isBebidas = item.category === 'Bebidas';
+        const isPorcoes = item.category === 'Batata Frita' || item.category === 'Porções';
+        const isAdicionais = item.category === 'Adicionais';
+
+        let icon = 'utensils';
+        let colorClass = 'text-brand-600 bg-brand-50';
+
+        if (isPasteis) {
+          icon = 'moon';
+          colorClass = 'text-yellow-600 bg-yellow-50';
+        } else if (isBurger) {
+          icon = 'sandwich';
+          colorClass = 'text-orange-600 bg-orange-50';
+        } else if (isBebidas) {
+          icon = 'cup-soda';
+          colorClass = 'text-blue-500 bg-blue-50';
+        } else if (isAcai) {
+          icon = 'ice-cream-bowl';
+          colorClass = 'text-purple-600 bg-purple-50';
+        } else if (isAdicionais) {
+          icon = 'plus-circle';
+          colorClass = 'text-emerald-600 bg-emerald-50';
+        }
+
+        div.innerHTML = `
+        <div class="relative w-[72px] h-[72px] rounded-2xl ${colorClass} flex items-center justify-center shrink-0 shadow-sm overflow-hidden">
+          <i data-lucide="${icon}" class="w-8 h-8 relative z-10"></i>
+          <div class="absolute -bottom-4 -right-4 w-12 h-12 bg-current opacity-10 rounded-full blur-sm"></div>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="font-bold text-slate-800 text-sm leading-tight">${item.name}</h3>
+              <p class="text-[11px] text-slate-400 mt-0.5 line-clamp-2 leading-tight">${item.description}</p>
+            </div>
+            <div class="check-circle w-6 h-6 rounded-full border-2 border-slate-200 flex items-center justify-center shrink-0 ml-2 ${isSel ? 'bg-brand-600 border-brand-600' : 'bg-white'}">
+              <i data-lucide="check" class="check-icon w-3.5 h-3.5 text-white transition-all duration-300 ${isSel ? 'opacity-100 scale-100' : 'opacity-0 scale-50'} stroke-[3]"></i>
+            </div>
+          </div>
+          <div class="mt-2 flex items-center gap-2">
+            <span class="font-display font-bold text-slate-900">R$ ${(item.price || 0).toFixed(2).replace('.', ',')}</span>
+          </div>
+        </div>`;
+        grid.appendChild(div);
+      });
+      window.refreshIcons();
+    };
+
+    window.renderHighlights = () => {
+      const container = document.getElementById('highlights-container');
+      if (!container) return;
+      container.innerHTML = "";
+
+      const highlights = state.config.highlights || [];
+      let hasValidHighlight = false;
+
+      highlights.forEach(h => {
+        if (h.image || h.title) {
+          hasValidHighlight = true;
+          container.innerHTML += `
+            <div class="snap-center shrink-0 w-[85%] max-w-[320px] rounded-3xl overflow-hidden relative shadow-lg aspect-[4/3]">
+                ${h.image ? `<img src="${h.image}" class="w-full h-full object-cover absolute inset-0">`
+              : `<div class="w-full h-full bg-gradient-to-br from-brand-500 to-brand-700 absolute inset-0"></div>`}
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+                
+                <div class="absolute inset-0 p-5 flex flex-col justify-end">
+                    ${h.badge ? `<span class="bg-brand-600/90 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full inline-block w-max mb-3 shadow-md border border-white/20">${h.badge}</span>` : ''}
+                    <h3 class="font-display font-black text-white text-xl leading-tight mb-1 drop-shadow-md">${h.title || ""}</h3>
+                    ${h.subtitle ? `<p class="text-white/80 text-xs font-medium leading-relaxed drop-shadow-sm">${h.subtitle}</p>` : ''}
+                </div>
+            </div>
+        `;
+        }
+      });
+
+      if (!hasValidHighlight) {
+        container.parentElement.classList.add('hidden');
+      } else {
+        container.parentElement.classList.remove('hidden');
+      }
+    };
+
+    window.renderPosts = () => {
+      const feed = document.getElementById('news-feed');
+      if (!feed) return;
+      feed.innerHTML = "";
+
+      const posts = state.config.posts || [];
+      if (posts.length === 0) {
+        feed.classList.add('hidden');
+        return;
+      }
+
+      feed.classList.remove('hidden');
+      posts.forEach(post => {
+        feed.innerHTML += `
+            <div class="news-card highlight p-4 rounded-[20px] flex flex-col gap-3 animate-slide-up">
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full bg-white border border-brand-100 flex items-center justify-center text-brand-500 shadow-sm shrink-0">
+                        <i data-lucide="megaphone" class="w-6 h-6"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-display font-bold text-slate-800 text-sm leading-tight">${post.title}</h3>
+                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">${post.message}</p>
+                        <p class="text-[10px] text-slate-400 mt-2 font-bold uppercase tracking-wider">Aviso da Loja</p>
+                    </div>
+                </div>
+                ${post.image ? `<img src="${post.image}" class="w-full h-auto rounded-xl shadow-sm border border-slate-100 mt-2" onerror="this.style.display='none'">` : ''}
+            </div>
+        `;
+      });
+      window.refreshIcons();
+    };
+
+    window.isStoreOpen = () => {
+      if (state.config.statusMode === 'open') return true;
+      if (state.config.statusMode === 'closed') return false;
+
+      const h = new Date().getHours();
+      const start = parseInt(state.config.openingHours?.start);
+      const end = parseInt(state.config.openingHours?.end);
+
+      if (isNaN(start) || isNaN(end)) return true;
+
+      if (start < end) {
+        return h >= start && h < end;
+      } else if (start > end) {
+        return h >= start || h < end;
+      } else {
+        return false;
+      }
+    };
+
+    window.updateUI = () => {
+      const isOpen = window.isStoreOpen();
+
+      const stDot = document.getElementById('status-indicator');
+      const stTxt = document.getElementById('status-text');
+      const stDotH = document.getElementById('status-dot');
+
+      if (stDot) stDot.className = `absolute bottom-0 right-0 w-3.5 h-3.5 border-2 border-white rounded-full ${isOpen ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`;
+      if (stDotH) stDotH.className = `w-1.5 h-1.5 rounded-full ${isOpen ? 'bg-green-500' : 'bg-red-500'}`;
+      if (stTxt) {
+        stTxt.innerText = isOpen ? "Aberto Agora" : "Fechado";
+        stTxt.className = `text-[10px] font-bold uppercase tracking-wider ${isOpen ? 'text-green-600' : 'text-red-500'}`;
+      }
+
+      const titleEl = document.getElementById('store-title-display');
+      if (titleEl && state.config.storeName) titleEl.innerText = state.config.storeName;
+
+      window.validateCheckout();
+    };
+
+    window.setupPhoneMask = () => {
+      const input = document.getElementById('client-phone');
+      if (!input) return;
+      input.addEventListener('input', (e) => {
+        let val = e.target.value.replace(/\D/g, '');
+        if (val.length === 0) { e.target.value = ''; return; }
+
+        let x = val.match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+        if (x) {
+          e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        }
+        window.saveFormData();
+        window.validateCheckout();
+      });
+    };
+
+    window.saveFormData = () => {
+      const data = {
+        name: document.getElementById('client-name')?.value,
+        phone: document.getElementById('client-phone')?.value,
+        address: document.getElementById('client-address')?.value,
+        payment: document.getElementById('payment-method')?.value,
+        deliveryType: state.deliveryType,
+        zoneVal: document.getElementById('delivery-zone')?.value,
+        obs: document.getElementById('obs-input')?.value
+      };
+      localStorage.setItem('pastel_form_data', JSON.stringify(data));
+    };
+
+    window.restoreFormData = () => {
+      const saved = localStorage.getItem('pastel_form_data');
+      if (saved) {
+        try {
+          const data = JSON.parse(saved);
+          if (document.getElementById('client-name')) document.getElementById('client-name').value = data.name || '';
+          if (document.getElementById('client-phone')) document.getElementById('client-phone').value = data.phone || '';
+          if (document.getElementById('client-address')) document.getElementById('client-address').value = data.address || '';
+          if (document.getElementById('payment-method')) document.getElementById('payment-method').value = data.payment || '';
+          if (document.getElementById('obs-input')) document.getElementById('obs-input').value = data.obs || '';
+
+          if (data.deliveryType) {
+            window.setDelivery(data.deliveryType);
+            if (data.deliveryType === 'Entrega' && data.zoneVal) {
+              setTimeout(() => {
+                const zoneSelect = document.getElementById('delivery-zone');
+                if (zoneSelect) {
+                  zoneSelect.value = data.zoneVal;
+                  window.renderCart();
+                }
+              }, 100);
+            }
+          }
+          window.handlePaymentChange();
+          window.validateCheckout();
+        } catch (e) { }
+      }
+    };
+
+    window.validateCheckout = () => {
+      const btn = document.getElementById('btn-checkout');
+      if (!btn) return;
+
+      const isOpen = window.isStoreOpen();
+      const cartOk = state.cart.length > 0;
+      const name = document.getElementById('client-name')?.value.trim();
+      const phone = document.getElementById('client-phone')?.value.trim();
+      const method = document.getElementById('payment-method')?.value;
+      const isDelivery = state.deliveryType === 'Entrega';
+      const zoneVal = document.getElementById('delivery-zone')?.value;
+      const address = document.getElementById('client-address')?.value.trim();
+
+      let msg = "Finalizar no WhatsApp";
+      let disabled = false;
+
+      if (!isOpen) {
+        msg = "Loja Fechada";
+        disabled = true;
+      } else if (!cartOk) {
+        msg = "Carrinho Vazio";
+        disabled = true;
+      } else if (!name) {
+        msg = "Informe seu Nome";
+        disabled = true;
+      } else if (!phone || phone.length < 10) {
+        msg = "Informe seu Telefone";
+        disabled = true;
+      } else if (isDelivery && !zoneVal) {
+        msg = "Selecione o Bairro";
+        disabled = true;
+      } else if (isDelivery && !address) {
+        msg = "Informe o Endereço";
+        disabled = true;
+      } else if (!method) {
+        msg = "Escolha o Pagamento";
+        disabled = true;
+      }
+
+      btn.disabled = disabled;
+      const icon = disabled ? 'alert-circle' : 'message-circle';
+      const currentText = btn.querySelector('span')?.innerText;
+      if (currentText !== msg) {
+        btn.innerHTML = `<div class="relative z-10 flex items-center gap-2"><i data-lucide="${icon}" class="w-6 h-6 fill-white/20"></i><span>${msg}</span></div>`;
+        window.refreshIcons();
+      }
+    };
+
+    window.sendOrder = () => {
+      try {
+        if (!state.cart || state.cart.length === 0) {
+          window.toast("Seu carrinho está vazio!", "error");
+          window.validateCheckout();
+          return;
+        }
+
+        if (!window.isStoreOpen()) {
+          window.toast("Loja fechada. Volte no horário!", "error");
+          window.updateUI();
+          return;
+        }
+
+        const btn = document.getElementById('btn-checkout');
+        const originalBtnContent = btn.innerHTML;
+        btn.innerHTML = '<div class="spinner"></div>';
+        btn.disabled = true;
+
+        const name = document.getElementById('client-name').value;
+        const phone = document.getElementById('client-phone').value;
+        const method = document.getElementById('payment-method').value;
+        const totalFinal = document.getElementById('cart-total').innerText;
+
+        let zoneName = "";
+        let address = "";
+        let shipText = "Grátis";
+        let shipValue = 0;
+        let deliveryDetailsStorage = "Retirada";
+
+        if (state.deliveryType === 'Entrega') {
+          const zoneSelect = document.getElementById('delivery-zone');
+          const zoneOption = zoneSelect?.selectedOptions?.[0];
+
+          zoneName = zoneOption ? (zoneOption.getAttribute('data-name') || zoneOption.text) : "";
+          shipValue = zoneOption ? parseFloat(zoneOption.getAttribute('data-price') || 0) : 0;
+
+          address = document.getElementById('client-address').value;
+          shipText = shipValue === 0 ? "Grátis" : `R$ ${shipValue.toFixed(2).replace('.', ',')}`;
+          deliveryDetailsStorage = `${zoneName} - ${address}`;
+        }
+
+        let paymentStatusFull = method;
+        if (method === 'Pix') paymentStatusFull += " (Confirmado no Site ✅)";
+
+        let subtotalVal = 0;
+        state.cart.forEach(i => subtotalVal += i.price * i.qty);
+        const subtotalStr = subtotalVal.toFixed(2).replace('.', ',');
+
+        const itemsStr = state.cart.map(i => `${i.qty}x ${i.name}`).join(", ");
+        const orderObj = {
+          date: new Date().toISOString(),
+          clientName: name,
+          clientPhone: phone,
+          itemsSummary: itemsStr,
+          total: totalFinal,
+          deliveryFee: shipText,
+          paymentMethod: method,
+          deliveryType: state.deliveryType,
+          deliveryDetails: deliveryDetailsStorage,
+          status: 'Novo',
+          userId: auth?.currentUser?.uid || 'anonymous',
+          cartDetails: JSON.stringify(state.cart)
+        };
+
+        try {
+          if (db) {
+            addDoc(getCollectionRef("pedidos"), orderObj).catch(() => { });
+          }
+        } catch (e) { }
+
+        const localOrders = JSON.parse(localStorage.getItem('pastel_orders_local') || '[]');
+        localOrders.push(orderObj);
+        localStorage.setItem('pastel_orders_local', JSON.stringify(localOrders));
+
+        if (state.config.googleScriptUrl) {
+          const dataHora = new Date().toLocaleString('pt-BR');
+          const data = {
+            data: dataHora,
+            cliente: name,
+            telefone: phone,
+            valor: totalFinal,
+            pagamento: paymentStatusFull,
+            endereco: deliveryDetailsStorage,
+            itens: itemsStr,
+            taxa: shipText
+          };
+          fetch(state.config.googleScriptUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify(data)
+          }).catch(() => { });
+        }
+
+        let msg = `🥟 *PEDIDO - PASTELARIA*\n`;
+        msg += `👤 *Cliente:* ${name}\n`;
+        msg += `💳 *Pagamento:* ${paymentStatusFull}\n`;
+
+        if (state.deliveryType === 'Entrega') {
+          msg += `📍 *Entrega:* ${zoneName}\n`;
+          msg += `🏠 *Endereço:* ${address}\n`;
+        } else {
+          msg += `📍 *Entrega:* Retirada na Loja\n`;
+        }
+
+        msg += `\n*ITENS:*\n`;
+        state.cart.forEach(i => {
+          const itemTotal = (i.price * i.qty).toFixed(2).replace('.', ',');
+          msg += `- ${i.qty}x ${i.name} ${i.obs ? `(${i.obs}) ` : ''}(R$ ${itemTotal})\n`;
+        });
+
+        msg += `\n🧾 *RESUMO:*\n`;
+        msg += `Subtotal: R$ ${subtotalStr}\n`;
+        msg += `Taxa de Entrega: ${shipText}\n`;
+        msg += `💰 *TOTAL FINAL: ${totalFinal}*`;
+
+        const phoneNum = state.config.phone ? state.config.phone.replace(/\D/g, '') : "557998168282";
+
+        const url = `https://api.whatsapp.com/send?phone=${phoneNum}&text=${encodeURIComponent(msg)}`;
+
+        state.cart = [];
+        saveCart();
+
+        const win = window.open(url, '_blank');
+        if (!win) {
+          window.location.href = url;
+        }
+
+        setTimeout(() => window.location.reload(), 3000);
+
+      } catch (err) {
+        console.error("Erro ao enviar pedido:", err);
+        window.toast("Erro ao enviar. Tente novamente.", "error");
+        const btn = document.getElementById('btn-checkout');
+        if (btn) {
+          btn.innerHTML = '<div class="relative z-10 flex items-center gap-2"><i data-lucide="message-circle" class="w-6 h-6 fill-white/20"></i><span>Tentar Novamente</span></div>';
+          btn.disabled = false;
+        }
+      }
+    };
+
+    function saveCart() { localStorage.setItem('pastel_cart_v1', JSON.stringify(state.cart)); }
+
+    window.init = async () => {
+      const hideSplash = () => {
+        const splash = document.getElementById('splash');
+        if (splash) {
+          splash.style.opacity = '0';
+          setTimeout(() => splash.style.display = 'none', 500);
+        }
+      };
+
+      try {
+        window.loadLocalConfig();
+        const savedCart = localStorage.getItem('pastel_cart_v1');
+        if (savedCart) state.cart = JSON.parse(savedCart);
+
+        window.setupPhoneMask();
+        window.renderMenu();
+        window.renderCart();
+        window.renderPosts();
+        window.renderHighlights();
+        window.updateUI();
+        window.restoreFormData();
+
+        const stTxt = document.getElementById('status-text');
+        const setOffline = () => {
+          if (stTxt) {
+            stTxt.innerText = "Modo Offline";
+            stTxt.className = "text-[10px] font-bold uppercase tracking-wider text-amber-500";
+          }
+          hideSplash();
+        };
+
+        const fbTimeout = setTimeout(() => {
+          if (!db) {
+            console.warn("Firebase timeout - using local config");
+            setOffline();
+          }
+        }, 6000);
+
+        const app = initializeApp(firebaseConfig);
+        auth = getAuth(app);
+        db = getFirestore(app);
+
+        onAuthStateChanged(auth, (user) => {
+          if (!user) signInAnonymously(auth).catch(() => { });
+        });
+
+        onSnapshot(getDocRef('loja', 'configuracao'), (snap) => {
+          clearTimeout(fbTimeout);
+          if (snap.exists()) {
+            state.config = { ...state.config, ...snap.data() };
+            window.syncMenuWithDefaults();
+            localStorage.setItem("pastel_config_v1", JSON.stringify(state.config));
+            window.renderMenu();
+            window.renderPosts();
+            window.renderHighlights();
+            window.updateUI();
+          }
+          hideSplash();
+        }, (err) => {
+          clearTimeout(fbTimeout);
+          setOffline();
+        });
+
+      } catch (err) {
+        console.error("Init error:", err);
+        const stTxt = document.getElementById('status-text');
+        if (stTxt) {
+          stTxt.innerText = "Erro Crítico";
+          stTxt.className = "text-[10px] font-bold uppercase tracking-wider text-red-500";
+        }
+        hideSplash();
+      }
+      window.refreshIcons();
+    };
+
+    setInterval(window.updateUI, 60000);
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', window.init);
+    } else {
+      window.init();
+    }
+
+  </script>
+  <!-- MODAL DE EDIÇÃO PROFISSIONAL -->
+  <div id="admin-edit-modal"
+    class="fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-sm p-8 rounded-[2.5rem] shadow-2xl relative">
+      <button onclick="document.getElementById('admin-edit-modal').classList.add('hidden')"
+        class="absolute top-5 right-5 text-slate-300 hover:text-slate-600"><i data-lucide="x"
+          class="w-6 h-6"></i></button>
+      <div class="text-center mb-8">
+        <h3 id="edit-modal-title" class="font-display font-bold text-2xl text-slate-900">Editar Item</h3>
+        <p id="edit-modal-type" class="text-[10px] font-black text-brand-600 uppercase tracking-widest mt-1"></p>
+      </div>
+
+      <div id="edit-modal-fields" class="space-y-4">
+        <!-- Campos dinâmicos aqui -->
+      </div>
+
+      <div class="flex gap-3 mt-8">
+        <button onclick="document.getElementById('admin-edit-modal').classList.add('hidden')"
+          class="flex-1 py-4 bg-slate-100 text-slate-600 rounded-2xl font-bold text-sm">Cancelar</button>
+        <button id="btn-save-edit"
+          class="flex-1 py-4 bg-brand-900 text-white rounded-2xl font-bold text-sm shadow-lg">Salvar</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>

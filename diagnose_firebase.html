@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico Firebase - Oxente Pastel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .error {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .success {
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .pending {
+            color: #f59e0b;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 p-8 font-sans">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-3xl shadow-xl">
+        <h1 class="text-2xl font-bold mb-6 text-slate-800">Diagnóstico de Conexão Firebase</h1>
+
+        <div class="space-y-4">
+            <div class="p-4 border rounded-xl">
+                <h2 class="font-bold">1. Carregamento dos Scripts</h2>
+                <ul id="scripts-status" class="mt-2 text-sm space-y-1">
+                    <li id="status-app">Firebase App: <span class="pending">Verificando...</span></li>
+                    <li id="status-auth">Firebase Auth: <span class="pending">Verificando...</span></li>
+                    <li id="status-firestore">Firebase Firestore: <span class="pending">Verificando...</span></li>
+                </ul>
+            </div>
+
+            <div class="p-4 border rounded-xl">
+                <h2 class="font-bold">2. Inicialização do App</h2>
+                <div id="init-status" class="mt-2 text-sm p-3 bg-slate-50 rounded-lg font-mono break-all">
+                    Aguardando...
+                </div>
+            </div>
+
+            <div class="p-4 border rounded-xl">
+                <h2 class="font-bold">3. Teste de Autenticação (Anônimo)</h2>
+                <div id="auth-status" class="mt-2 text-sm p-3 bg-slate-50 rounded-lg font-mono">
+                    Aguardando...
+                </div>
+            </div>
+
+            <div class="p-4 border rounded-xl">
+                <h2 class="font-bold">4. Teste de Firestore (Leitura)</h2>
+                <div id="firestore-status" class="mt-2 text-sm p-3 bg-slate-50 rounded-lg font-mono">
+                    Aguardando...
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <button onclick="runDiagnosis()"
+                class="w-full py-4 bg-brand-600 bg-orange-600 text-white rounded-2xl font-bold shadow-lg hover:bg-orange-700 transition-colors">
+                Iniciar Diagnóstico
+            </button>
+        </div>
+
+        <div class="mt-6 text-xs text-slate-400">
+            Este utilitário usa as mesmas configurações presentes em <code>js/client.js</code>.
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAUFCJ29qcS-GkbfenuclGthZQ5PNRZ4qA",
+            authDomain: "oxentepastel-c8c13.firebaseapp.com",
+            projectId: "oxentepastel-c8c13",
+            storageBucket: "oxentepastel-c8c13.firebasestorage.app",
+            messagingSenderId: "191843729572",
+            appId: "1:191843729572:web:484973bccabcfb2a7b6631"
+        };
+
+        window.runDiagnosis = async () => {
+            const setStatus = (id, text, isError = false) => {
+                const el = document.getElementById(id);
+                el.innerHTML = text;
+                el.className = isError ? 'error' : 'success';
+            };
+
+            const log = (id, msg, isError = false) => {
+                const el = document.getElementById(id);
+                el.innerText = msg;
+                el.className = isError ? 'mt-2 text-sm p-3 bg-red-50 text-red-700 rounded-lg font-mono' : 'mt-2 text-sm p-3 bg-green-50 text-green-700 rounded-lg font-mono';
+            };
+
+            try {
+                // Step 1: Scripts already loaded via module imports above
+                setStatus('status-app', 'OK');
+                setStatus('status-auth', 'OK');
+                setStatus('status-firestore', 'OK');
+
+                // Step 2: Init
+                log('init-status', 'Inicializando...');
+                const app = initializeApp(firebaseConfig);
+                log('init-status', 'Firebase App Inicializado com Sucesso!');
+
+                // Step 3: Auth
+                log('auth-status', 'Tentando login anônimo...');
+                const auth = getAuth(app);
+                const user = await signInAnonymously(auth);
+                log('auth-status', `Autenticado! UID: ${user.user.uid}`);
+
+                // Step 4: Firestore
+                log('firestore-status', 'Tentando ler documento loja/configuracao...');
+                const db = getFirestore(app);
+                const snap = await getDoc(doc(db, 'loja', 'configuracao'));
+
+                if (snap.exists()) {
+                    log('firestore-status', `Sucesso! Nome da loja: ${snap.data().storeName}`);
+                } else {
+                    log('firestore-status', 'Documento não encontrado (Coleção errada ou vazio).', true);
+                }
+
+            } catch (err) {
+                console.error(err);
+                const errorMsg = `${err.code || 'Erro Desconhecido'}: ${err.message}`;
+
+                if (document.getElementById('init-status').innerText === 'Inicializando...') {
+                    log('init-status', errorMsg, true);
+                } else if (document.getElementById('auth-status').innerText === 'Tentando login anônimo...') {
+                    log('auth-status', errorMsg, true);
+                } else {
+                    log('firestore-status', errorMsg, true);
+                }
+            }
+        };
+    </script>
+</body>
+
+</html>
